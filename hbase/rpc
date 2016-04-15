@@ -1,0 +1,9 @@
+RpcServer
+(1) Listener accept连接，round robin分发给Reader读取数据。
+(2) Reader(默认10个) 从channel读取数据，解析Call request，分发给scheduler
+(3) Scheduler 包含一些Handlers，处理Call request
+(4) Responder
+
+http://gee.cs.oswego.edu/dl/cpjslides/nio.pdf
+
+
