@@ -13,10 +13,22 @@ http://blog.cloudera.com/blog/2013/01/apache-hbase-internals-locking-and-multive
 2. mvcc > smallestReadPoint的，全部INCLUDE
 这个在flush，compaction的时候都是成立的。
 
-
 smallestReadPoint有可能长期不变一个是因为bug，如 https://issues.apache.org/jira/browse/HBASE-16012，另一个原因就是有一个long running的scan一直活着没超时没结束。
-
 
 另外Memstore里面的数据，一行的更新为什么不能直接替换掉旧的数据，也是因为mvcc，可见性的问题。
 
+scan在openscanner的时候就确定好了readPoint，在扫数据的过程中是不会更新的，所以这个更应该对应SNAPSHOT语义，而不是READ_COMMITTED，要实现真正的READ_COMMITTED，改动比较大。
+
+
+/**
+ * Specify Isolation levels in Scan operations.
+ * <p>
+ * There are two isolation levels. A READ_COMMITTED isolation level
+ * indicates that only data that is committed be returned in a scan.
+ * An isolation level of READ_UNCOMMITTED indicates that a scan
+ * should return data that is being modified by transactions that might
+ * not have been committed yet.
+ */
+public enum IsolationLevel {
+}
 
