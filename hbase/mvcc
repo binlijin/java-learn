@@ -1,0 +1,22 @@
+
+https://blogs.apache.org/hbase/entry/apache_hbase_internals_locking_and
+
+https://github.com/huangqian/note/blob/master/HBase/hbase-internals-locking-and-mvcc.md
+
+http://blog.cloudera.com/blog/2013/01/apache-hbase-internals-locking-and-multiversion-concurrency-control/
+
+
+每个cell都会带上mvcc number，写到HFile的时候也会序列化mvcc number，如果mvcc number < smallestReadPoint，那么就可以省略掉不写，因为这些数据对所有的reader来说都是可见的。
+
+现在的逻辑：
+1. mvcc < smallestReadPoint的，最多保留maxVersion个版本
+2. mvcc > smallestReadPoint的，全部INCLUDE
+这个在flush，compaction的时候都是成立的。
+
+
+smallestReadPoint有可能长期不变一个是因为bug，如 https://issues.apache.org/jira/browse/HBASE-16012，另一个原因就是有一个long running的scan一直活着没超时没结束。
+
+
+另外Memstore里面的数据，一行的更新为什么不能直接替换掉旧的数据，也是因为mvcc，可见性的问题。
+
+

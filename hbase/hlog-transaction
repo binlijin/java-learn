@@ -1,0 +1,44 @@
+
+HLog在写的时候一次事务的所有cells都包装在一个entry里面，这个entry要么读取成功，要么读取失败，不会读取部分数据出来，保证了hlog的事务。
+这个entry在写hdfs的时候是一个个package写下去的，只有这个entry的所有package都写成功才算成功，部分数据写成功，entry不会解析成功。
+
+/**
+ * WALEdit: Used in HBase's transaction log (WAL) to represent
+ * the collection of edits (KeyValue objects) corresponding to a
+ * single transaction. The class implements "Writable" interface
+ * for serializing/deserializing a set of KeyValue items.
+ *
+ * Previously, if a transaction contains 3 edits to c1, c2, c3 for a row R,
+ * the WAL would have three log entries as follows:
+ *
+ *    <logseq1-for-edit1>:<KeyValue-for-edit-c1>
+ *    <logseq2-for-edit2>:<KeyValue-for-edit-c2>
+ *    <logseq3-for-edit3>:<KeyValue-for-edit-c3>
+ *
+ * This presents problems because row level atomicity of transactions
+ * was not guaranteed. If we crash after few of the above appends make
+ * it, then recovery will restore a partial transaction.
+ *
+ * In the new world, all the edits for a given transaction are written
+ * out as a single record, for example:
+ *
+ *   <logseq#-for-entire-txn>:<WALEdit-for-entire-txn>
+ *
+ * where, the WALEdit is serialized as:
+ *   <-1, # of edits, <KeyValue>, <KeyValue>, ... >
+ * For example:
+ *   <-1, 3, <Keyvalue-for-edit-c1>, <KeyValue-for-edit-c2>, <KeyValue-for-edit-c3>>
+ *
+ * The -1 marker is just a special way of being backward compatible with
+ * an old WAL which would have contained a single <KeyValue>.
+ *
+ * The deserializer for WALEdit backward compatibly detects if the record
+ * is an old style KeyValue or the new style WALEdit.
+ *
+ */
+
+@InterfaceAudience.LimitedPrivate({ HBaseInterfaceAudience.REPLICATION,
+    HBaseInterfaceAudience.COPROC })
+public class WALEdit implements Writable, HeapSize {
+}
+
