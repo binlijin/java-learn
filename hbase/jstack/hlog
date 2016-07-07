@@ -1,0 +1,75 @@
+
+"regionserver/hadoop0282.et2.tbsite.net/11.251.152.101:16020.append-pool2-t1" prio=10 tid=0x00007f40894d2000 nid=0x6c53 runnable [0x00007f4086174000]
+   java.lang.Thread.State: RUNNABLE
+        at sun.misc.Unsafe.unpark(Native Method)
+        at java.util.concurrent.locks.LockSupport.unpark(LockSupport.java:152)
+        at java.util.concurrent.locks.AbstractQueuedSynchronizer.unparkSuccessor(AbstractQueuedSynchronizer.java:662)
+        at java.util.concurrent.locks.AbstractQueuedSynchronizer.doReleaseShared(AbstractQueuedSynchronizer.java:689)
+        at java.util.concurrent.locks.AbstractQueuedSynchronizer.releaseShared(AbstractQueuedSynchronizer.java:1341)
+        at java.util.concurrent.CountDownLatch.countDown(CountDownLatch.java:296)
+        at org.apache.hadoop.hbase.wal.WALKey.setWriteEntry(WALKey.java:130)
+        at org.apache.hadoop.hbase.regionserver.wal.FSWALEntry.stampRegionSequenceId(FSWALEntry.java:136)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$RingBufferEventHandler.append(FSHLog.java:2133)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$RingBufferEventHandler.onEvent(FSHLog.java:2022)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$RingBufferEventHandler.onEvent(FSHLog.java:1944)
+        at com.lmax.disruptor.BatchEventProcessor.run(BatchEventProcessor.java:128)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+
+
+
+
+
+"sync.1" prio=10 tid=0x00007f490a030800 nid=0x6c55 in Object.wait() [0x00007f40860f2000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+        at java.lang.Object.wait(Native Method)
+        at org.apache.hadoop.hdfs.DFSOutputStream.waitForAckedSeqno(DFSOutputStream.java:2158)
+        - locked <0x00007f427e8a0b48> (a java.util.LinkedList)
+        at org.apache.hadoop.hdfs.DFSOutputStream.flushOrSync(DFSOutputStream.java:2048)
+        at org.apache.hadoop.hdfs.DFSOutputStream.hflush(DFSOutputStream.java:1955)
+        at org.apache.hadoop.fs.FSDataOutputStream.hflush(FSDataOutputStream.java:130)
+        at org.apache.hadoop.hbase.regionserver.wal.ProtobufLogWriter.sync(ProtobufLogWriter.java:173)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$SyncRunner.run(FSHLog.java:1381)
+        at java.lang.Thread.run(Thread.java:756)
+
+"sync.0" prio=10 tid=0x00007f490a030000 nid=0x6c54 in Object.wait() [0x00007f4086133000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+        at java.lang.Object.wait(Native Method)
+        at org.apache.hadoop.hdfs.DFSOutputStream.waitForAckedSeqno(DFSOutputStream.java:2158)
+        - locked <0x00007f427e8a0b48> (a java.util.LinkedList)
+        at org.apache.hadoop.hdfs.DFSOutputStream.flushOrSync(DFSOutputStream.java:2048)
+        at org.apache.hadoop.hdfs.DFSOutputStream.hflush(DFSOutputStream.java:1955)
+        at org.apache.hadoop.fs.FSDataOutputStream.hflush(FSDataOutputStream.java:130)
+        at org.apache.hadoop.hbase.regionserver.wal.ProtobufLogWriter.sync(ProtobufLogWriter.java:173)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$SyncRunner.run(FSHLog.java:1381)
+        at java.lang.Thread.run(Thread.java:756)
+
+"regionserver/hadoop0282.et2.tbsite.net/11.251.152.101:16020.append-pool2-t1" prio=10 tid=0x00007f40894d2000 nid=0x6c53 runnable [0x00007f4086174000]
+   java.lang.Thread.State: RUNNABLE
+        at org.apache.hadoop.fs.FSOutputSummer.flushBuffer(FSOutputSummer.java:159)
+        - locked <0x00007f42c6d23cd8> (a org.apache.hadoop.hdfs.DFSOutputStream)
+        at org.apache.hadoop.fs.FSOutputSummer.flushBuffer(FSOutputSummer.java:144)
+        - eliminated <0x00007f42c6d23cd8> (a org.apache.hadoop.hdfs.DFSOutputStream)
+        at org.apache.hadoop.fs.FSOutputSummer.write1(FSOutputSummer.java:135)
+        at org.apache.hadoop.fs.FSOutputSummer.write(FSOutputSummer.java:110)
+        - locked <0x00007f42c6d23cd8> (a org.apache.hadoop.hdfs.DFSOutputStream)
+        at org.apache.hadoop.fs.FSDataOutputStream$PositionCache.write(FSDataOutputStream.java:58)
+        at java.io.DataOutputStream.write(DataOutputStream.java:107)
+        - locked <0x00007f42a4dc03c8> (a org.apache.hadoop.hdfs.client.HdfsDataOutputStream)
+        at org.apache.hadoop.hbase.regionserver.wal.WALCellCodec$CompressedKvEncoder.write(WALCellCodec.java:211)
+        at org.apache.hadoop.hbase.regionserver.wal.ProtobufLogWriter.append(ProtobufLogWriter.java:122)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$RingBufferEventHandler.append(FSHLog.java:2158)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$RingBufferEventHandler.onEvent(FSHLog.java:2022)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$RingBufferEventHandler.onEvent(FSHLog.java:1944)
+        at com.lmax.disruptor.BatchEventProcessor.run(BatchEventProcessor.java:128)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+
+
+

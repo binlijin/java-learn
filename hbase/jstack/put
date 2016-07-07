@@ -1,0 +1,105 @@
+
+"B.defaultRpcServer.handler=69,queue=4,port=16020" daemon prio=10 tid=0x00007f40b7e3c000 nid=0x6ad6 in Object.wait() [0x00007f40a70f2000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+        at java.lang.Object.wait(Native Method)
+        at org.apache.hadoop.hbase.regionserver.wal.SyncFuture.get(SyncFuture.java:167)
+        - locked <0x00007f421803b240> (a org.apache.hadoop.hbase.regionserver.wal.SyncFuture)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog.blockOnSync(FSHLog.java:1506)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog.publishSyncThenBlockOnCompletion(FSHLog.java:1500)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog.sync(FSHLog.java:1634)
+        at org.apache.hadoop.hbase.regionserver.HRegion.syncOrDefer(HRegion.java:7983)
+        at org.apache.hadoop.hbase.regionserver.HRegion.doMiniBatchMutation(HRegion.java:3220)
+        at org.apache.hadoop.hbase.regionserver.HRegion.batchMutate(HRegion.java:2869)
+        at org.apache.hadoop.hbase.regionserver.HRegion.batchMutate(HRegion.java:2809)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.doBatchOp(RSRpcServices.java:735)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.doNonAtomicRegionMutation(RSRpcServices.java:697)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.multi(RSRpcServices.java:2095)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:32213)
+        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2188)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:102)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:133)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:108)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+"B.defaultRpcServer.handler=59,queue=7,port=16020" daemon prio=10 tid=0x00007f40b7e34800 nid=0x6acc runnable [0x00007f40a737b000]
+   java.lang.Thread.State: RUNNABLE
+        at sun.misc.Unsafe.park(Native Method)
+        - parking to wait for  <0x00007f4165ca62f0> (a java.util.concurrent.CountDownLatch$Sync)
+        at java.util.concurrent.locks.LockSupport.park(LockSupport.java:186)
+        at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:834)
+        at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireSharedInterruptibly(AbstractQueuedSynchronizer.java:994)
+        at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(AbstractQueuedSynchronizer.java:1303)
+        at java.util.concurrent.CountDownLatch.await(CountDownLatch.java:236)
+        at org.apache.hadoop.hbase.wal.WALKey.getWriteEntry(WALKey.java:98)
+        at org.apache.hadoop.hbase.regionserver.HRegion.doMiniBatchMutation(HRegion.java:3177)
+        at org.apache.hadoop.hbase.regionserver.HRegion.batchMutate(HRegion.java:2869)
+        at org.apache.hadoop.hbase.regionserver.HRegion.batchMutate(HRegion.java:2809)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.doBatchOp(RSRpcServices.java:735)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.doNonAtomicRegionMutation(RSRpcServices.java:697)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.multi(RSRpcServices.java:2095)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:32213)
+        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2188)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:102)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:133)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:108)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+"B.defaultRpcServer.handler=38,queue=12,port=16020" daemon prio=10 tid=0x00007f40b7e25000 nid=0x6ab7 runnable [0x00007f40af533000]
+   java.lang.Thread.State: RUNNABLE
+        at org.apache.hadoop.hbase.regionserver.MultiVersionConsistencyControl.advanceMemstore(MultiVersionConsistencyControl.java:107)
+        - locked <0x00007f4202d98ca8> (a java.util.LinkedList)
+        at org.apache.hadoop.hbase.regionserver.MultiVersionConsistencyControl.waitForPreviousTransactionsComplete(MultiVersionConsistencyControl.java:195)
+        at org.apache.hadoop.hbase.regionserver.MultiVersionConsistencyControl.completeMemstoreInsert(MultiVersionConsistencyControl.java:91)
+        at org.apache.hadoop.hbase.regionserver.HRegion.doMiniBatchMutation(HRegion.java:3236)
+        at org.apache.hadoop.hbase.regionserver.HRegion.batchMutate(HRegion.java:2869)
+        at org.apache.hadoop.hbase.regionserver.HRegion.batchMutate(HRegion.java:2809)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.doBatchOp(RSRpcServices.java:735)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.doNonAtomicRegionMutation(RSRpcServices.java:697)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.multi(RSRpcServices.java:2095)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:32213)
+        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2188)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:102)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:133)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:108)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+
+"B.defaultRpcServer.handler=124,queue=7,port=16020" daemon prio=10 tid=0x00007f40b7eda000 nid=0x6b0d waiting on condition [0x00007f4097237000]
+   java.lang.Thread.State: WAITING (parking)
+        at sun.misc.Unsafe.park(Native Method)
+        - parking to wait for  <0x00007f4200e118b0> (a java.util.concurrent.locks.ReentrantLock$NonfairSync)
+        at java.util.concurrent.locks.LockSupport.park(LockSupport.java:186)
+        at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:834)
+        at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(AbstractQueuedSynchronizer.java:867)
+        at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(AbstractQueuedSynchronizer.java:1197)
+        at java.util.concurrent.locks.ReentrantLock$NonfairSync.lock(ReentrantLock.java:214)
+        at java.util.concurrent.locks.ReentrantLock.lock(ReentrantLock.java:290)
+        at org.apache.hadoop.hbase.regionserver.HRegion.doMiniBatchMutation(HRegion.java:3082)
+        at org.apache.hadoop.hbase.regionserver.HRegion.batchMutate(HRegion.java:2869)
+        at org.apache.hadoop.hbase.regionserver.HRegion.batchMutate(HRegion.java:2809)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.doBatchOp(RSRpcServices.java:735)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.doNonAtomicRegionMutation(RSRpcServices.java:697)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.multi(RSRpcServices.java:2095)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:32213)
+        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2188)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:102)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:133)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:108)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

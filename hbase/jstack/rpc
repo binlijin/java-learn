@@ -1,0 +1,15 @@
+"B.defaultRpcServer.handler=12,queue=12,port=16020" daemon prio=10 tid=0x00007f40bb941800 nid=0x6a9d runnable [0x00007f40b37fe000]
+   java.lang.Thread.State: RUNNABLE
+        at java.nio.HeapByteBuffer.<init>(HeapByteBuffer.java:57)
+        at java.nio.ByteBuffer.allocate(ByteBuffer.java:331)
+        at org.apache.hadoop.hbase.io.BoundedByteBufferPool.getBuffer(BoundedByteBufferPool.java:97)
+        at org.apache.hadoop.hbase.ipc.IPCUtil.buildCellBlock(IPCUtil.java:124)
+        at org.apache.hadoop.hbase.ipc.RpcServer$Call.setResponse(RpcServer.java:455)
+        - locked <0x00007f4179ea48d0> (a org.apache.hadoop.hbase.ipc.RpcServer$Call)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:122)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:133)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:108)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+
