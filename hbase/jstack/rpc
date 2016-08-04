@@ -13,3 +13,65 @@
 
 
 
+"B.defaultRpcServer.handler=116,queue=12,port=16020" daemon prio=10 tid=0x00007f7dd0878000 nid=0x25ba4 runnable [0x00007f7dc0bfe000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.NativeThread.current(Native Method)
+	at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:521)
+	- locked <0x00007f826b118878> (a java.lang.Object)
+	- locked <0x00007f826b118758> (a java.lang.Object)
+	at org.apache.hadoop.hbase.ipc.BufferChain.write(BufferChain.java:105)
+	at org.apache.hadoop.hbase.ipc.RpcServer.channelWrite(RpcServer.java:2413)
+	at org.apache.hadoop.hbase.ipc.RpcServer$Responder.processResponse(RpcServer.java:1139)
+	at org.apache.hadoop.hbase.ipc.RpcServer$Responder.doRespond(RpcServer.java:1203)
+	at org.apache.hadoop.hbase.ipc.RpcServer$Call.sendResponseIfReady(RpcServer.java:574)
+	- locked <0x00007f7ebe4ce528> (a org.apache.hadoop.hbase.ipc.RpcServer$Call)
+	at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:124)
+	at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:133)
+	at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:108)
+	at java.lang.Thread.run(Thread.java:756)
+
+
+
+
+"B.defaultRpcServer.handler=80,queue=2,port=16020" daemon prio=10 tid=0x00007f7dd082c000 nid=0x25b7e runnable [0x00007f7dcc9b5000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.misc.Unsafe.unpark(Native Method)
+	at java.util.concurrent.locks.LockSupport.unpark(LockSupport.java:152)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.unparkSuccessor(AbstractQueuedSynchronizer.java:662)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.release(AbstractQueuedSynchronizer.java:1263)
+	at java.util.concurrent.locks.ReentrantLock.unlock(ReentrantLock.java:460)
+	at org.apache.hadoop.hbase.io.BoundedByteBufferPool.putBuffer(BoundedByteBufferPool.java:121)
+	at org.apache.hadoop.hbase.ipc.RpcServer$Call.done(RpcServer.java:384)
+	at org.apache.hadoop.hbase.ipc.RpcServer$Responder.processResponse(RpcServer.java:1153)
+	at org.apache.hadoop.hbase.ipc.RpcServer$Responder.doRespond(RpcServer.java:1203)
+	at org.apache.hadoop.hbase.ipc.RpcServer$Call.sendResponseIfReady(RpcServer.java:574)
+	- locked <0x00007f7e46f33c18> (a org.apache.hadoop.hbase.ipc.RpcServer$Call)
+	at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:124)
+	at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:133)
+	at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:108)
+	at java.lang.Thread.run(Thread.java:756)
+
+
+
+
+
+Thread 30 (RpcServer.responder):
+  State: BLOCKED
+  Blocked count: 2452052
+  Waited count: 1061151
+  Blocked on org.apache.hadoop.metrics2.lib.MutableCounterLong@134e306
+  Blocked by 58 (B.defaultRpcServer.handler=22,queue=9,port=16020)
+  Stack:
+    org.apache.hadoop.metrics2.lib.MutableCounterLong.incr(MutableCounterLong.java:51)
+    org.apache.hadoop.hbase.ipc.MetricsHBaseServerSourceImpl.sentBytes(MetricsHBaseServerSourceImpl.java:154)
+    org.apache.hadoop.hbase.ipc.MetricsHBaseServer.sentBytes(MetricsHBaseServer.java:57)
+    org.apache.hadoop.hbase.ipc.RpcServer.channelWrite(RpcServer.java:2414)
+    org.apache.hadoop.hbase.ipc.RpcServer$Responder.processResponse(RpcServer.java:1139)
+    org.apache.hadoop.hbase.ipc.RpcServer$Responder.processAllResponses(RpcServer.java:1178)
+    org.apache.hadoop.hbase.ipc.RpcServer$Responder.doAsyncWrite(RpcServer.java:1111)
+    org.apache.hadoop.hbase.ipc.RpcServer$Responder.doRunLoop(RpcServer.java:1031)
+    org.apache.hadoop.hbase.ipc.RpcServer$Responder.run(RpcServer.java:966)
+
+
+
+

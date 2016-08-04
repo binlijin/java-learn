@@ -1,0 +1,3 @@
+
+nohup ./bin/graceful_stop.sh --restart --reload -d --maxthreads 10 host1 &
+
