@@ -1,8 +1,4 @@
 
-"regionserver/hadoop0282.et2.tbsite.net/11.251.152.101:16020.append-pool2-t1" prio=10 tid=0x00007f40894d2000 nid=0x6c53 runnable [0x00007f4086174000]
-   java.lang.Thread.State: RUNNABLE
-        at sun.misc.Unsafe.unpark(Native Method)
-        at java.util.concurrent.locks.LockSupport.unpark(LockSupport.java:152)
         at java.util.concurrent.locks.AbstractQueuedSynchronizer.unparkSuccessor(AbstractQueuedSynchronizer.java:662)
         at java.util.concurrent.locks.AbstractQueuedSynchronizer.doReleaseShared(AbstractQueuedSynchronizer.java:689)
         at java.util.concurrent.locks.AbstractQueuedSynchronizer.releaseShared(AbstractQueuedSynchronizer.java:1341)
@@ -70,6 +66,48 @@
         at java.lang.Thread.run(Thread.java:756)
 
 
+
+
+"regionserver/hadoop1279.et2.tbsite.net/11.251.161.81:16020.append-pool2-t1" prio=10 tid=0x00007fcfc18ca800 nid=0x2a62c runnable [0x00007fcfbc33b000]
+   java.lang.Thread.State: RUNNABLE
+        at java.lang.ThreadLocal.get(ThreadLocal.java:144)
+        at org.apache.hadoop.fs.FileSystem$Statistics.getThreadStatistics(FileSystem.java:3005)
+        at org.apache.hadoop.fs.FileSystem$Statistics.incrementBytesWritten(FileSystem.java:3033)
+        at org.apache.hadoop.fs.FSDataOutputStream$PositionCache.write(FSDataOutputStream.java:53)
+        at java.io.DataOutputStream.write(DataOutputStream.java:88)
+        - locked <0x00007fd3f877dca8> (a org.apache.hadoop.hdfs.client.HdfsDataOutputStream)
+        at org.apache.hadoop.hbase.io.util.StreamUtils.writeLong(StreamUtils.java:200)
+        at org.apache.hadoop.hbase.regionserver.wal.WALCellCodec$CompressedKvEncoder.write(WALCellCodec.java:209)
+        at org.apache.hadoop.hbase.regionserver.wal.ProtobufLogWriter.append(ProtobufLogWriter.java:122)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$RingBufferEventHandler.append(FSHLog.java:2158)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$RingBufferEventHandler.onEvent(FSHLog.java:2022)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$RingBufferEventHandler.onEvent(FSHLog.java:1944)
+        at com.lmax.disruptor.BatchEventProcessor.run(BatchEventProcessor.java:128)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+
+"regionserver/hadoop1025.et2.tbsite.net/11.251.158.71:16020.append-pool2-t1" prio=10 tid=0x00007f0cbf8d0800 nid=0x1c3eb runnable [0x00007f0cbb237000]
+   java.lang.Thread.State: RUNNABLE
+        at java.util.HashMap.createEntry(HashMap.java:897)
+        at java.util.HashMap.addEntry(HashMap.java:884)
+        at java.util.HashMap.put(HashMap.java:505)
+        at org.apache.hadoop.hbase.io.util.LRUDictionary$BidirectionalLRUMap.put(LRUDictionary.java:112)
+        at org.apache.hadoop.hbase.io.util.LRUDictionary$BidirectionalLRUMap.access$200(LRUDictionary.java:76)
+        at org.apache.hadoop.hbase.io.util.LRUDictionary.addEntry(LRUDictionary.java:62)
+        at org.apache.hadoop.hbase.io.util.LRUDictionary.findEntry(LRUDictionary.java:54)
+        at org.apache.hadoop.hbase.regionserver.wal.WALCellCodec$CompressedKvEncoder.write(WALCellCodec.java:228)
+        at org.apache.hadoop.hbase.regionserver.wal.WALCellCodec$CompressedKvEncoder.write(WALCellCodec.java:205)
+        at org.apache.hadoop.hbase.regionserver.wal.ProtobufLogWriter.append(ProtobufLogWriter.java:122)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$RingBufferEventHandler.append(FSHLog.java:2146)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$RingBufferEventHandler.onEvent(FSHLog.java:2010)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$RingBufferEventHandler.onEvent(FSHLog.java:1932)
+        at com.lmax.disruptor.BatchEventProcessor.run(BatchEventProcessor.java:128)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:756)
 
 
 

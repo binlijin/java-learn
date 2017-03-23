@@ -1,3 +1,7 @@
 
 mvn clean package -DskipTests assembly:single
 
+
+mvn clean
+mvn -B -PrunAllTests -DreuseForks=false -Dmaven.test.redirectTestOutputToFile=true -Dsurefire.rerunFailingTestsCount=2 -Dit.test=noItTest -Dmaven.test.failure.ignore=true -Dsurefire.testFailureIgnore=true test
+

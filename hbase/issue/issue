@@ -1,0 +1,17 @@
+
+Pass blocks of KVs from HFile scanner to the StoreFileScanner and up
+https://issues.apache.org/jira/browse/HBASE-9440
+
+Refactor ScanQueryMatcher
+https://issues.apache.org/jira/browse/HBASE-16225
+
+Prefix Compression - Trie data block encoding
+https://issues.apache.org/jira/browse/HBASE-4676
+
+Minimize garbage memory allocations during compaction
+https://issues.apache.org/jira/browse/HBASE-15542
+
+Memory Management
+https://issues.apache.org/jira/browse/HBASE-15555
+
+

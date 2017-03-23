@@ -1,0 +1,10 @@
+reader=/hbase/data/hbase/meta/1588230740/info/670e284071eb42caae92cfd2f76a7d3b,
+    compression=none,
+    cacheConf=CacheConfig:disabled,
+    firstKey=APP,,1465218981678.66d589233cb6671ac3da70278f781ae5./info:regioninfo/1465218982278/Put,
+    lastKey=vid,0019:,1465227294309.82d7c32366210981e58b3f484b5562a0./info:serverstartcode/1469525759679/Put,
+    avgKeyLen=101,
+    avgValueLen=17,
+    entries=7386524,
+    length=963424224
+

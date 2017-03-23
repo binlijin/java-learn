@@ -1,0 +1,132 @@
+
+"PriorityRpcServer.handler=28,queue=0,port=16020" daemon prio=10 tid=0x00007f1e1b39c000 nid=0x36a0 runnable [0x00007f1ded33a000]
+   java.lang.Thread.State: RUNNABLE
+        at org.apache.hadoop.hbase.io.hfile.HFileReaderV2$ScannerV2._next(HFileReaderV2.java:865)
+        at org.apache.hadoop.hbase.io.hfile.HFileReaderV2$ScannerV2.next(HFileReaderV2.java:882)
+        at org.apache.hadoop.hbase.regionserver.StoreFileScanner.next(StoreFileScanner.java:140)
+        at org.apache.hadoop.hbase.regionserver.KeyValueHeap.next(KeyValueHeap.java:108)
+        at org.apache.hadoop.hbase.regionserver.StoreScanner.next(StoreScanner.java:622)
+        at org.apache.hadoop.hbase.regionserver.KeyValueHeap.next(KeyValueHeap.java:147)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.populateResult(HRegion.java:5618)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.nextInternal(HRegion.java:5769)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.nextRaw(HRegion.java:5556)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.scan(RSRpcServices.java:2482)
+        - locked <0x00007f1ef3528b08> (a org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:32205)
+        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2188)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:102)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:133)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:108)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+"PriorityRpcServer.handler=6,queue=0,port=16020" daemon prio=10 tid=0x00007f1e1b38b800 nid=0x368a runnable [0x00007f1df5133000]
+   java.lang.Thread.State: RUNNABLE
+        at org.apache.hadoop.hbase.io.hfile.HFileReaderV2$ScannerV2.formNoTagsKeyValue(HFileReaderV2.java:772)
+        at org.apache.hadoop.hbase.io.hfile.HFileReaderV3$ScannerV3.getKeyValue(HFileReaderV3.java:206)
+        at org.apache.hadoop.hbase.regionserver.StoreFileScanner.next(StoreFileScanner.java:141)
+        at org.apache.hadoop.hbase.regionserver.KeyValueHeap.next(KeyValueHeap.java:108)
+        at org.apache.hadoop.hbase.regionserver.StoreScanner.next(StoreScanner.java:622)
+        at org.apache.hadoop.hbase.regionserver.KeyValueHeap.next(KeyValueHeap.java:147)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.populateResult(HRegion.java:5618)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.nextInternal(HRegion.java:5769)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.nextRaw(HRegion.java:5556)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.scan(RSRpcServices.java:2482)
+        - locked <0x00007f1e7588c320> (a org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:32205)
+        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2188)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:102)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:133)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:108)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+"PriorityRpcServer.handler=9,queue=1,port=16020" daemon prio=10 tid=0x00007f1e1b38d800 nid=0x368d runnable [0x00007f1df506f000]
+   java.lang.Thread.State: RUNNABLE
+        at org.apache.hadoop.hbase.KeyValue$MetaComparator.compareRowKey(KeyValue.java:1894)
+        at org.apache.hadoop.hbase.KeyValue$MetaComparator.compare(KeyValue.java:1793)
+        at org.apache.hadoop.hbase.regionserver.StoreScanner.checkScanOrder(StoreScanner.java:780)
+        at org.apache.hadoop.hbase.regionserver.StoreScanner.next(StoreScanner.java:532)
+        at org.apache.hadoop.hbase.regionserver.KeyValueHeap.next(KeyValueHeap.java:147)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.populateResult(HRegion.java:5618)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.nextInternal(HRegion.java:5769)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.nextRaw(HRegion.java:5556)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.scan(RSRpcServices.java:2482)
+        - locked <0x00007f1f8957f5e8> (a org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:32205)
+        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2188)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:102)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:133)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:108)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+
+"PriorityRpcServer.handler=17,queue=1,port=16020" daemon prio=10 tid=0x00007f1e1b393800 nid=0x3695 runnable [0x00007f1df1236000]
+   java.lang.Thread.State: RUNNABLE
+        at org.apache.hadoop.hbase.CellComparator.compareColumns(CellComparator.java:157)
+        at org.apache.hadoop.hbase.CellComparator.compareWithoutRow(CellComparator.java:224)
+        at org.apache.hadoop.hbase.KeyValue$MetaComparator.compare(KeyValue.java:1797)
+        at org.apache.hadoop.hbase.regionserver.StoreScanner.checkScanOrder(StoreScanner.java:780)
+        at org.apache.hadoop.hbase.regionserver.StoreScanner.next(StoreScanner.java:532)
+        at org.apache.hadoop.hbase.regionserver.KeyValueHeap.next(KeyValueHeap.java:147)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.populateResult(HRegion.java:5618)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.nextInternal(HRegion.java:5769)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.nextRaw(HRegion.java:5556)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.scan(RSRpcServices.java:2482)
+        - locked <0x00007f1ef7820450> (a org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:32205)
+        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2188)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:102)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:133)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:108)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+
+"PriorityRpcServer.handler=7,queue=1,port=16020" daemon prio=10 tid=0x00007f1e1b38c000 nid=0x368b runnable [0x00007f1df50f1000]
+   java.lang.Thread.State: RUNNABLE
+        at org.apache.hadoop.hbase.regionserver.ScanQueryMatcher.match(ScanQueryMatcher.java:281)
+        at org.apache.hadoop.hbase.regionserver.StoreScanner.next(StoreScanner.java:535)
+        at org.apache.hadoop.hbase.regionserver.KeyValueHeap.next(KeyValueHeap.java:147)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.populateResult(HRegion.java:5618)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.nextInternal(HRegion.java:5769)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.nextRaw(HRegion.java:5556)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.scan(RSRpcServices.java:2482)
+        - locked <0x00007f1e74bf14b8> (a org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:32205)
+        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2188)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:102)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:133)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:108)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+
+
+"PriorityRpcServer.handler=4,queue=0,port=16020" daemon prio=10 tid=0x00007f1e1b38a000 nid=0x3688 runnable [0x00007f1df51b4000]
+   java.lang.Thread.State: RUNNABLE
+        at org.apache.hadoop.hbase.KeyValue$KVComparator.compareKey(KeyValue.java:1971)
+        at org.apache.hadoop.hbase.regionserver.ScanQueryMatcher.compareKeyForNextColumn(ScanQueryMatcher.java:602)
+        at org.apache.hadoop.hbase.regionserver.StoreScanner.optimize(StoreScanner.java:666)
+        at org.apache.hadoop.hbase.regionserver.StoreScanner.next(StoreScanner.java:536)
+        at org.apache.hadoop.hbase.regionserver.KeyValueHeap.next(KeyValueHeap.java:147)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.populateResult(HRegion.java:5618)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.nextInternal(HRegion.java:5769)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.nextRaw(HRegion.java:5556)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.scan(RSRpcServices.java:2482)
+        - locked <0x00007f1ef4910398> (a org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:32205)
+        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2188)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:102)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:133)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:108)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+
+
+
+
+
+

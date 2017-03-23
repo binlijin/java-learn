@@ -397,3 +397,35 @@
 
 
 
+
+
+
+"B.defaultRpcServer.handler=47,queue=8,port=16020" daemon prio=10 tid=0x00007f4d20413800 nid=0x22ec3 runnable [0x00007f4d1ecb0000]
+   java.lang.Thread.State: RUNNABLE
+        at java.lang.Object.hashCode(Native Method)
+        at java.util.concurrent.ConcurrentHashMap.hash(ConcurrentHashMap.java:333)
+        at java.util.concurrent.ConcurrentHashMap.put(ConcurrentHashMap.java:1125)
+        at java.util.Collections$SetFromMap.add(Collections.java:3903)
+        at org.apache.hadoop.hbase.regionserver.HStore.addChangedReaderObserver(HStore.java:1154)
+        at org.apache.hadoop.hbase.regionserver.StoreScanner.<init>(StoreScanner.java:189)
+        at org.apache.hadoop.hbase.regionserver.HStore.getScanner(HStore.java:2028)
+        at org.apache.hadoop.hbase.regionserver.HRegion$RegionScannerImpl.<init>(HRegion.java:5447)
+        at org.apache.hadoop.hbase.regionserver.HRegion.instantiateRegionScanner(HRegion.java:2560)
+        at org.apache.hadoop.hbase.regionserver.HRegion.getScanner(HRegion.java:2546)
+        at org.apache.hadoop.hbase.regionserver.HRegion.getScanner(HRegion.java:2528)
+        at org.apache.hadoop.hbase.regionserver.HRegion.get(HRegion.java:6657)
+        at org.apache.hadoop.hbase.regionserver.HRegion.get(HRegion.java:6636)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.doNonAtomicRegionMutation(RSRpcServices.java:614)
+        at org.apache.hadoop.hbase.regionserver.RSRpcServices.multi(RSRpcServices.java:2095)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:32213)
+        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2188)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:102)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:133)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:108)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+
+
+
+

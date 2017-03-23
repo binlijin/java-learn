@@ -1,0 +1,81 @@
+
+"regionserver/hadoop04/10.1.1.10:16020-shortCompactions-1471249822423" daemon prio=10 tid=0x00007f7936824000 nid=0x38cb9 runnable [0x00007f6ca2303000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+        at sun.misc.Unsafe.park(Native Method)
+        at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:349)
+        at com.lmax.disruptor.MultiProducerSequencer.next(MultiProducerSequencer.java:136)
+        at com.lmax.disruptor.MultiProducerSequencer.next(MultiProducerSequencer.java:105)
+        at com.lmax.disruptor.RingBuffer.next(RingBuffer.java:246)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog.append(FSHLog.java:1222)
+        at org.apache.hadoop.hbase.regionserver.wal.WALUtil.writeMarker(WALUtil.java:125)
+        at org.apache.hadoop.hbase.regionserver.wal.WALUtil.writeCompactionMarker(WALUtil.java:62)
+        at org.apache.hadoop.hbase.regionserver.HStore.writeCompactionWalRecord(HStore.java:1314)
+        at org.apache.hadoop.hbase.regionserver.HStore.compact(HStore.java:1253)
+        at org.apache.hadoop.hbase.regionserver.HRegion.compact(HRegion.java:1868)
+        at org.apache.hadoop.hbase.regionserver.CompactSplitThread$CompactionRunner.run(CompactSplitThread.java:519)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+
+"regionserver/hadoop04/10.1.1.10:16020.append-pool2-t1" prio=10 tid=0x00007f6ca80d0800 nid=0x365a7 waiting on condition [0x00007f6ca49f6000]
+   java.lang.Thread.State: WAITING (parking)
+        at sun.misc.Unsafe.park(Native Method)
+        - parking to wait for  <0x00007f705df635f8> (a java.util.concurrent.CountDownLatch$Sync)
+        at java.util.concurrent.locks.LockSupport.park(LockSupport.java:186)
+        at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:834)
+        at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireSharedInterruptibly(AbstractQueuedSynchronizer.java:994)
+        at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(AbstractQueuedSynchronizer.java:1303)
+        at java.util.concurrent.CountDownLatch.await(CountDownLatch.java:236)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$SafePointZigZagLatch.safePointAttained(FSHLog.java:1866)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$RingBufferEventHandler.attainSafePoint(FSHLog.java:2066)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$RingBufferEventHandler.onEvent(FSHLog.java:2029)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog$RingBufferEventHandler.onEvent(FSHLog.java:1909)
+        at com.lmax.disruptor.BatchEventProcessor.run(BatchEventProcessor.java:128)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+"MemStoreFlusher.1" prio=10 tid=0x00007f6ca80ca800 nid=0x34a5c runnable [0x00007f6ca8470000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+        at sun.misc.Unsafe.park(Native Method)
+        at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:349)
+        at com.lmax.disruptor.MultiProducerSequencer.next(MultiProducerSequencer.java:136)
+        at com.lmax.disruptor.MultiProducerSequencer.next(MultiProducerSequencer.java:105)
+        at com.lmax.disruptor.RingBuffer.next(RingBuffer.java:246)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog.append(FSHLog.java:1222)
+        at org.apache.hadoop.hbase.regionserver.HRegion.appendEmptyEdit(HRegion.java:8254)
+        at org.apache.hadoop.hbase.regionserver.HRegion.getNextSequenceId(HRegion.java:2495)
+        at org.apache.hadoop.hbase.regionserver.HRegion.internalPrepareFlushCache(HRegion.java:2236)
+        at org.apache.hadoop.hbase.regionserver.HRegion.internalFlushcache(HRegion.java:2116)
+        at org.apache.hadoop.hbase.regionserver.HRegion.internalFlushcache(HRegion.java:2081)
+        at org.apache.hadoop.hbase.regionserver.HRegion.flushcache(HRegion.java:1973)
+        at org.apache.hadoop.hbase.regionserver.HRegion.flush(HRegion.java:1899)
+        at org.apache.hadoop.hbase.regionserver.MemStoreFlusher.flushRegion(MemStoreFlusher.java:510)
+        at org.apache.hadoop.hbase.regionserver.MemStoreFlusher.flushRegion(MemStoreFlusher.java:471)
+        at org.apache.hadoop.hbase.regionserver.MemStoreFlusher.access$800(MemStoreFlusher.java:75)
+        at org.apache.hadoop.hbase.regionserver.MemStoreFlusher$FlushHandler.run(MemStoreFlusher.java:259)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+
+"regionserver/hadoop04/10.1.1.10:16020.logRoller" daemon prio=10 tid=0x00007f6ca80c9000 nid=0x34a5a runnable [0x00007f6ca84f2000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+        at sun.misc.Unsafe.park(Native Method)
+        at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:349)
+        at com.lmax.disruptor.MultiProducerSequencer.next(MultiProducerSequencer.java:136)
+        at com.lmax.disruptor.MultiProducerSequencer.next(MultiProducerSequencer.java:105)
+        at com.lmax.disruptor.RingBuffer.next(RingBuffer.java:246)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog.publishSyncOnRingBuffer(FSHLog.java:1481)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog.publishSyncOnRingBuffer(FSHLog.java:1477)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog.replaceWriter(FSHLog.java:957)
+        at org.apache.hadoop.hbase.regionserver.wal.FSHLog.rollWriter(FSHLog.java:726)
+        at org.apache.hadoop.hbase.regionserver.LogRoller.run(LogRoller.java:148)
+        at java.lang.Thread.run(Thread.java:756)
+
+
+
+
+

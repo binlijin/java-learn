@@ -1,0 +1,147 @@
+
+"PriorityRpcServer.handler=29,queue=0,port=60020" daemon prio=10 tid=0x00007f3f3d422800 nid=0x1e0d4 runnable [0x0000000044fbb000]
+   java.lang.Thread.State: RUNNABLE
+        at org.apache.hadoop.hbase.util.Bytes$LexicographicalComparerHolder$UnsafeComparer.compareTo(Bytes.java:1287)
+        at org.apache.hadoop.hbase.util.Bytes.compareTo(Bytes.java:1215)
+        at org.apache.hadoop.hbase.KeyValue$KVComparator.compareRows(KeyValue.java:2189)
+        at org.apache.hadoop.hbase.KeyValue$MetaComparator.compareRows(KeyValue.java:1878)
+        at org.apache.hadoop.hbase.KeyValue$KVComparator.compareRows(KeyValue.java:2173)
+        at org.apache.hadoop.hbase.KeyValue$RowOnlyComparator.compare(KeyValue.java:2962)
+        at org.apache.hadoop.hbase.KeyValue$RowOnlyComparator.compare(KeyValue.java:2954)
+        at java.util.TreeMap.getEntryUsingComparator(TreeMap.java:369)
+        at java.util.TreeMap.getEntry(TreeMap.java:340)
+        at java.util.TreeMap.get(TreeMap.java:273)
+        at org.apache.hadoop.hbase.regionserver.GetClosestRowBeforeTracker.isDeleted(GetClosestRowBeforeTracker.java:123)
+        at org.apache.hadoop.hbase.regionserver.GetClosestRowBeforeTracker.addCandidate(GetClosestRowBeforeTracker.java:102)
+        at org.apache.hadoop.hbase.regionserver.GetClosestRowBeforeTracker.handle(GetClosestRowBeforeTracker.java:206)
+        at org.apache.hadoop.hbase.regionserver.HStore.walkForwardInSingleRow(HStore.java:1804)
+        at org.apache.hadoop.hbase.regionserver.HStore.rowAtOrBeforeFromStoreFile(HStore.java:1754)
+        at org.apache.hadoop.hbase.regionserver.HStore.getRowKeyAtOrBefore(HStore.java:1687)
+        at org.apache.hadoop.hbase.regionserver.HRegion.getClosestRowBefore(HRegion.java:1965)
+        at org.apache.hadoop.hbase.regionserver.HRegionServer.get(HRegionServer.java:2977)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:30942)
+        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2099)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:101)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:130)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:107)
+        at java.lang.Thread.run(Thread.java:744)
+
+"PriorityRpcServer.handler=26,queue=0,port=60020" daemon prio=10 tid=0x00007f3f3d420800 nid=0x1e0d1 runnable [0x0000000044ef8000]
+   java.lang.Thread.State: RUNNABLE
+        at org.apache.hadoop.hbase.util.Bytes$LexicographicalComparerHolder$UnsafeComparer.compareTo(Bytes.java:1287)
+        at org.apache.hadoop.hbase.util.Bytes.compareTo(Bytes.java:1215)
+        at org.apache.hadoop.hbase.KeyValue$KVComparator.compareRows(KeyValue.java:2189)
+        at org.apache.hadoop.hbase.KeyValue$MetaComparator.compareRows(KeyValue.java:1878)
+        at org.apache.hadoop.hbase.KeyValue$KVComparator.compareRows(KeyValue.java:2173)
+        at org.apache.hadoop.hbase.regionserver.HStore.walkForwardInSingleRow(HStore.java:1797)
+        at org.apache.hadoop.hbase.regionserver.HStore.rowAtOrBeforeFromStoreFile(HStore.java:1754)
+        at org.apache.hadoop.hbase.regionserver.HStore.getRowKeyAtOrBefore(HStore.java:1687)
+        at org.apache.hadoop.hbase.regionserver.HRegion.getClosestRowBefore(HRegion.java:1965)
+        at org.apache.hadoop.hbase.regionserver.HRegionServer.get(HRegionServer.java:2977)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:30942)
+        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2099)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:101)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:130)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:107)
+        at java.lang.Thread.run(Thread.java:744)
+
+
+
+"PriorityRpcServer.handler=25,queue=0,port=60020" daemon prio=10 tid=0x00007f3f3d41f800 nid=0x1e0d0 runnable [0x0000000044eb7000]
+   java.lang.Thread.State: RUNNABLE
+        at org.apache.hadoop.hbase.util.Bytes$LexicographicalComparerHolder$UnsafeComparer.compareTo(Bytes.java:1287)
+        at org.apache.hadoop.hbase.util.Bytes.compareTo(Bytes.java:1215)
+        at org.apache.hadoop.hbase.KeyValue$MetaComparator.compareRows(KeyValue.java:1854)
+        at org.apache.hadoop.hbase.KeyValue$KVComparator.compareFlatKey(KeyValue.java:1988)
+        at org.apache.hadoop.hbase.KeyValue$KVComparator.compare(KeyValue.java:1956)
+        at org.apache.hadoop.hbase.util.Bytes.binarySearch(Bytes.java:1855)
+        at org.apache.hadoop.hbase.io.hfile.HFileBlockIndex$BlockIndexReader.rootBlockContainingKey(HFileBlockIndex.java:392)
+        at org.apache.hadoop.hbase.io.hfile.HFileBlockIndex$BlockIndexReader.loadDataBlockWithScanInfo(HFileBlockIndex.java:209)
+        at org.apache.hadoop.hbase.io.hfile.HFileBlockIndex$BlockIndexReader.seekToDataBlock(HFileBlockIndex.java:179)
+        at org.apache.hadoop.hbase.io.hfile.HFileReaderV2$AbstractScannerV2.seekBefore(HFileReaderV2.java:593)
+        at org.apache.hadoop.hbase.regionserver.HStore.rowAtOrBeforeFromStoreFile(HStore.java:1744)
+        at org.apache.hadoop.hbase.regionserver.HStore.getRowKeyAtOrBefore(HStore.java:1687)
+        at org.apache.hadoop.hbase.regionserver.HRegion.getClosestRowBefore(HRegion.java:1965)
+        at org.apache.hadoop.hbase.regionserver.HRegionServer.get(HRegionServer.java:2977)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:30942)
+        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2099)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:101)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:130)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:107)
+        at java.lang.Thread.run(Thread.java:744)
+
+
+
+
+
+"PriorityRpcServer.handler=23,queue=0,port=60020" daemon prio=10 tid=0x00007f3f48fe8800 nid=0x1e0ce runnable [0x0000000044e35000]
+   java.lang.Thread.State: RUNNABLE
+        at org.apache.hadoop.hbase.util.Bytes$LexicographicalComparerHolder$UnsafeComparer.compareTo(Bytes.java:1287)
+        at org.apache.hadoop.hbase.util.Bytes.compareTo(Bytes.java:1215)
+        at org.apache.hadoop.hbase.KeyValue$MetaComparator.compareRows(KeyValue.java:1854)
+        at org.apache.hadoop.hbase.KeyValue$KVComparator.compareFlatKey(KeyValue.java:1988)
+        at org.apache.hadoop.hbase.KeyValue$KVComparator.compare(KeyValue.java:1956)
+        at org.apache.hadoop.hbase.io.hfile.HFileReaderV3$ScannerV3.blockSeek(HFileReaderV3.java:287)
+        at org.apache.hadoop.hbase.io.hfile.HFileReaderV2$ScannerV2.loadBlockAndSeekToKey(HFileReaderV2.java:831)
+        at org.apache.hadoop.hbase.io.hfile.HFileReaderV2$AbstractScannerV2.seekBefore(HFileReaderV2.java:621)
+        at org.apache.hadoop.hbase.regionserver.HStore.rowAtOrBeforeFromStoreFile(HStore.java:1744)
+        at org.apache.hadoop.hbase.regionserver.HStore.getRowKeyAtOrBefore(HStore.java:1687)
+        at org.apache.hadoop.hbase.regionserver.HRegion.getClosestRowBefore(HRegion.java:1965)
+        at org.apache.hadoop.hbase.regionserver.HRegionServer.get(HRegionServer.java:2977)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:30942)
+        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2099)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:101)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:130)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:107)
+        at java.lang.Thread.run(Thread.java:744)
+
+
+
+
+
+"PriorityRpcServer.handler=19,queue=0,port=60020" daemon prio=10 tid=0x00007f3f48fe5800 nid=0x1e0ca runnable [0x0000000044d31000]
+   java.lang.Thread.State: RUNNABLE
+        at org.apache.hadoop.hbase.util.Bytes$LexicographicalComparerHolder$UnsafeComparer.compareTo(Bytes.java:1287)
+        at org.apache.hadoop.hbase.util.Bytes.compareTo(Bytes.java:1215)
+        at org.apache.hadoop.hbase.KeyValue$MetaComparator.compareRows(KeyValue.java:1854)
+        at org.apache.hadoop.hbase.KeyValue$KVComparator.compareFlatKey(KeyValue.java:1988)
+        at org.apache.hadoop.hbase.io.hfile.HFileBlockIndex$BlockIndexReader.binarySearchNonRootIndex(HFileBlockIndex.java:515)
+        at org.apache.hadoop.hbase.io.hfile.HFileBlockIndex$BlockIndexReader.locateNonRootIndexEntry(HFileBlockIndex.java:568)
+        at org.apache.hadoop.hbase.io.hfile.HFileBlockIndex$BlockIndexReader.loadDataBlockWithScanInfo(HFileBlockIndex.java:278)
+        at org.apache.hadoop.hbase.io.hfile.HFileReaderV2$AbstractScannerV2.seekTo(HFileReaderV2.java:539)
+        at org.apache.hadoop.hbase.io.hfile.HFileReaderV2$AbstractScannerV2.seekTo(HFileReaderV2.java:560)
+        at org.apache.hadoop.hbase.regionserver.HStore.seekToScanner(HStore.java:1774)
+        at org.apache.hadoop.hbase.regionserver.HStore.rowAtOrBeforeFromStoreFile(HStore.java:1752)
+        at org.apache.hadoop.hbase.regionserver.HStore.getRowKeyAtOrBefore(HStore.java:1687)
+        at org.apache.hadoop.hbase.regionserver.HRegion.getClosestRowBefore(HRegion.java:1965)
+        at org.apache.hadoop.hbase.regionserver.HRegionServer.get(HRegionServer.java:2977)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:30942)
+        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2099)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:101)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:130)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:107)
+        at java.lang.Thread.run(Thread.java:744)
+
+
+"PriorityRpcServer.handler=6,queue=0,port=60020" daemon prio=10 tid=0x00007f3f48fdb800 nid=0x1e0bd runnable [0x00000000449e4000]
+   java.lang.Thread.State: RUNNABLE
+        at org.apache.hadoop.hbase.util.Bytes$LexicographicalComparerHolder$UnsafeComparer.compareTo(Bytes.java:1287)
+        at org.apache.hadoop.hbase.util.Bytes.compareTo(Bytes.java:1215)
+        at org.apache.hadoop.hbase.KeyValue$KVComparator.compareRows(KeyValue.java:2189)
+        at org.apache.hadoop.hbase.KeyValue$MetaComparator.compareRows(KeyValue.java:1878)
+        at org.apache.hadoop.hbase.KeyValue$KVComparator.compareRows(KeyValue.java:2173)
+        at org.apache.hadoop.hbase.regionserver.HStore.walkForwardInSingleRow(HStore.java:1797)
+        at org.apache.hadoop.hbase.regionserver.HStore.rowAtOrBeforeFromStoreFile(HStore.java:1754)
+        at org.apache.hadoop.hbase.regionserver.HStore.getRowKeyAtOrBefore(HStore.java:1687)
+        at org.apache.hadoop.hbase.regionserver.HRegion.getClosestRowBefore(HRegion.java:1965)
+        at org.apache.hadoop.hbase.regionserver.HRegionServer.get(HRegionServer.java:2977)
+        at org.apache.hadoop.hbase.protobuf.generated.ClientProtos$ClientService$2.callBlockingMethod(ClientProtos.java:30942)
+        at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:2099)
+        at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:101)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor.consumerLoop(RpcExecutor.java:130)
+        at org.apache.hadoop.hbase.ipc.RpcExecutor$1.run(RpcExecutor.java:107)
+        at java.lang.Thread.run(Thread.java:744)
+
+
+
+
