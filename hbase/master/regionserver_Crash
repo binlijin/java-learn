@@ -1,0 +1,15 @@
+（1）regionserver启动会在zk上面注册一个临时节点，当regionserver挂掉或者gc等长时间stop的时候,这个临时节点会被删除
+master通过这个临时节点来监控regionserver是不是挂了。
+regionserver stop的时候会主动删除这个临时节点
+ (2) 如果meta region在这个regionserver上面：
+     split meta region，同步等待split完成
+     assign meta region，同步等待meta assign完成
+ (3) split hlog
+ (4) assign region
+（5）RegionServerTracker
+
+master完成，meta location写到zk，region location更新到meta region
+    // Post open deploy task:
+    //   meta => update meta location in ZK
+    //   other region => update meta
+
