@@ -1,0 +1,22 @@
+
+ServerShutdownHandler
+
+(1) rename regionserver wal directory
+(2) put regionserver wal目录下面的hlog到zk上
+(3) 等待这些hlog split完成
+(4) split 完成后，reassign这个regionserver上之前的region出去。
+
+
+
+ServerShutdownHandler 是放到HMaster上一个线程池执行的，并发数有限。
+
+    <property>
+      <name>hbase.master.executor.serverops.threads</name>
+      <value>30</value>
+    </property>
+
+
+(1) split hlog file是并行的
+(2) region open的时候replay hlog是按照log顺序串行replay的。
+
+
