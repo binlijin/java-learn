@@ -1,0 +1,8 @@
+
+export MAVEN_OPTS="-Xmx6100M -XX:-UsePerfData"
+
+nohup mvn  -PrunAllTests  -DreuseForks=false  -Dmaven.test.redirectTestOutputToFile=true  -Dsurefire.rerunFailingTestsCount=2  -Dit.test=noItTest  -Dmaven.test.failure.ignore=true  -Dsurefire.testFailureIgnore=true  -Dmaven.test.error.ignore=true  clean install &
+ 
+ps -ef | grep surefire
+嗯，用我发的这个再跑一次吧，跑之前先ps -ef | grep surefire看一下有没有残留的UT进程，有的话kill一下
+
