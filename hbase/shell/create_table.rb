@@ -1,0 +1,6 @@
+n_splits=30
+create 'table_128B', {SPLITS => (1..n_splits).map {|i| "user#{1000+i*(9999-1000)/n_splits}"}, MAX_FILESIZE=>'223372036854775807',DURABILITY=>'SYNC_WAL',METADATA => {'hbase.hstore.block.storage.policy' => 'ONE_SSD'}},{NAME=>'cf',DATA_BLOCK_ENCODING=>'DIFF',COMPRESSION=>'SNAPPY',BLOCKSIZE=>'65536',BLOCKCACHE=>'true',IN_MEMORY=>'false'}
+create 'table_1024B', {SPLITS => (1..n_splits).map {|i| "user#{1000+i*(9999-1000)/n_splits}"}, MAX_FILESIZE=>'223372036854775807',DURABILITY=>'SYNC_WAL',METADATA => {'hbase.hstore.block.storage.policy' => 'ONE_SSD'}},{NAME=>'cf',DATA_BLOCK_ENCODING=>'DIFF',COMPRESSION=>'SNAPPY',BLOCKSIZE=>'65536',BLOCKCACHE=>'true',IN_MEMORY=>'false'}
+create 'table_put_128B', {SPLITS => (1..n_splits).map {|i| "user#{1000+i*(9999-1000)/n_splits}"}, MAX_FILESIZE=>'223372036854775807',DURABILITY=>'SYNC_WAL',METADATA => {'hbase.hstore.block.storage.policy' => 'ONE_SSD'}},{NAME=>'cf',DATA_BLOCK_ENCODING=>'DIFF',COMPRESSION=>'SNAPPY',BLOCKSIZE=>'65536',BLOCKCACHE=>'true',IN_MEMORY=>'false'}
+create 'table_put_1024B', {SPLITS => (1..n_splits).map {|i| "user#{1000+i*(9999-1000)/n_splits}"}, MAX_FILESIZE=>'223372036854775807',DURABILITY=>'SYNC_WAL',METADATA => {'hbase.hstore.block.storage.policy' => 'ONE_SSD'}},{NAME=>'cf',DATA_BLOCK_ENCODING=>'DIFF',COMPRESSION=>'SNAPPY',BLOCKSIZE=>'65536',BLOCKCACHE=>'true',IN_MEMORY=>'false'}
+
