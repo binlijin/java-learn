@@ -33,3 +33,7 @@ http://chenyuzhao.me/2017/02/08/jobmanager%E5%9F%BA%E6%9C%AC%E7%BB%84%E4%BB%B6/
        追踪当前存活的 TaskManager 的管理组件
   
   
+  - **初始化各个组件**
+  
+  - **submitJob**
+
