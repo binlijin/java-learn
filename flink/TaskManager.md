@@ -4,6 +4,10 @@ Deploy/Stop/Cancel task
 
 TaskManager 基本组件  
 http://chenyuzhao.me/2017/02/09/taskmanager%E5%9F%BA%E6%9C%AC%E7%BB%84%E4%BB%B6/
+- （1）task 的启动销毁  
+- （2）内存管理  
+- （3）磁盘IO IOManager  
+- （4）网络传输管理  
 
 
 Flink运行时之TaskManager执行Task  
