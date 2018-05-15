@@ -12,11 +12,11 @@ The job manager is responsible for receiving Flink jobs, scheduling the tasks, g
   
   
 YarnApplicationMasterRunner
- * This class is the executable entry point for the YARN application master.
- * It starts actor system and the actors for {@link JobManager}
- * and {@link YarnFlinkResourceManager}.
- * <p>The JobManager handles Flink job execution, while the YarnFlinkResourceManager handles container
- * allocation and failure detection.
+* This class is the executable entry point for the YARN application master.
+* It starts actor system and the actors for {@link JobManager}
+* and {@link YarnFlinkResourceManager}.
+* <p>The JobManager handles Flink job execution, while the YarnFlinkResourceManager handles container
+* allocation and failure detection.  
   
   
 Flink JobManager 基本组件  
