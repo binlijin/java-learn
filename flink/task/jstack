@@ -1,0 +1,42 @@
+
+"TriggerWindow(TumblingProcessingTimeWindows(5000), ReducingStateDescriptor{serializer=org.apache.flink.api.java.typeutils.runtime.PojoSerializer@60ae8159, reduceFunction=org.apache.flink.streaming.examples.socket.SocketWindowWordCount$1@d554c5f}, ProcessingTimeTrigger(), WindowedStream.reduce(WindowedStream.java:241)) -> Sink: Unnamed (1/1)" #44 prio=5 os_prio=31 tid=0x00007fce9013f800 nid=0x8803 in Object.wait() [0x000070001152d000]
+   java.lang.Thread.State: WAITING (on object monitor)
+        at java.lang.Object.wait(Native Method)
+        - waiting on <0x00000007bece25b0> (a java.util.ArrayDeque)
+        at java.lang.Object.wait(Object.java:502)
+        at org.apache.flink.runtime.io.network.partition.consumer.SingleInputGate.getNextBufferOrEvent(SingleInputGate.java:513)
+        - locked <0x00000007bece25b0> (a java.util.ArrayDeque)
+        at org.apache.flink.streaming.runtime.io.BarrierTracker.getNextNonBlocked(BarrierTracker.java:93)
+        at org.apache.flink.streaming.runtime.io.StreamInputProcessor.processInput(StreamInputProcessor.java:214)
+        at org.apache.flink.streaming.runtime.tasks.OneInputStreamTask.run(OneInputStreamTask.java:69)
+        at org.apache.flink.streaming.runtime.tasks.StreamTask.invoke(StreamTask.java:264)
+        at org.apache.flink.runtime.taskmanager.Task.run(Task.java:718)
+        at java.lang.Thread.run(Thread.java:748)
+
+
+"Source: Socket Stream -> Flat Map (1/1)" #42 prio=5 os_prio=31 tid=0x00007fce919db000 nid=0x8903 runnable [0x0000700011326000]
+   java.lang.Thread.State: RUNNABLE
+        at java.net.SocketInputStream.socketRead0(Native Method)
+        at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+        at java.net.SocketInputStream.read(SocketInputStream.java:171)
+        at java.net.SocketInputStream.read(SocketInputStream.java:141)
+        at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:284)
+        at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:326)
+        at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:178)
+        - locked <0x00000007be2573a8> (a java.io.InputStreamReader)
+        at java.io.InputStreamReader.read(InputStreamReader.java:184)
+        at java.io.BufferedReader.read1(BufferedReader.java:210)
+        at java.io.BufferedReader.read(BufferedReader.java:286)
+        - locked <0x00000007be2573a8> (a java.io.InputStreamReader)
+        at java.io.Reader.read(Reader.java:140)
+        at org.apache.flink.streaming.api.functions.source.SocketTextStreamFunction.run(SocketTextStreamFunction.java:101)
+        at org.apache.flink.streaming.api.operators.StreamSource.run(StreamSource.java:86)
+        at org.apache.flink.streaming.api.operators.StreamSource.run(StreamSource.java:55)
+        at org.apache.flink.streaming.runtime.tasks.SourceStreamTask.run(SourceStreamTask.java:94)
+        at org.apache.flink.streaming.runtime.tasks.StreamTask.invoke(StreamTask.java:264)
+        at org.apache.flink.runtime.taskmanager.Task.run(Task.java:718)
+        at java.lang.Thread.run(Thread.java:748)
+
+
+
+
