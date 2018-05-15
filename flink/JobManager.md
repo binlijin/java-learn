@@ -39,7 +39,6 @@ http://chenyuzhao.me/2017/02/08/jobmanager%E5%9F%BA%E6%9C%AC%E7%BB%84%E4%BB%B6/
   - InstanceManager
   - FlinkScheduler
   - BlobLibraryCacheManager
-  
 **submitJob**
   - 参数JobGraph  
     代表一个flink job
