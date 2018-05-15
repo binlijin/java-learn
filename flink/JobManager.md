@@ -43,6 +43,8 @@ http://chenyuzhao.me/2017/02/08/jobmanager%E5%9F%BA%E6%9C%AC%E7%BB%84%E4%BB%B6/
 - **submitJob**
   - 参数JobGraph 
     代表一个flink job
- 
+  - library registration 
+    注册到libraryCacheManager
+
   
 Submits a job to the job manager. The job is registered at the libraryCacheManager which creates the job's class loader. The job graph is appended to the corresponding execution graph and the execution vertices are queued for scheduling.   
