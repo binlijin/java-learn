@@ -3,3 +3,41 @@ http://wuchong.me/blog/2016/05/03/flink-internals-overview/
 
 Apache Flink：详细入门
 http://www.aboutyun.com/thread-18491-1-1.html
+
+
+Flink 中的执行图可以分成四层：StreamGraph -> JobGraph -> ExecutionGraph -> 物理执行图。
+
+Deploy
+(1)Local Mode
+(2)YARN Per-job Mode
+(3)YARN Session Mode
+
+Schedule 调度
+(1)Job Schedule
+(2)Slot Protocols
+(3)Resource Protocols
+(4)Batch schedule & failover
+
+failover
+(1)Task Failover
+(2)JobManager Failover
+
+容错机制
+（1）checkpoint
+（2）statebackend 
+
+Network & Shuffle
+
+Operator
+（1）Source Operator
+（2）Transformation Operator
+     map、keyBy、timeWindow、apply
+（3）Sink Operator
+Operator Chain
+
+类型，序列化/反序列化
+
+通信：
+（1）
+（2）
+（3）
