@@ -1,0 +1,5 @@
+Flink运行时之生成作业图
+http://vinoyang.com/2017/02/21/flink-runtime-generate-job-graph/
+
+Flink 原理与实现：如何生成 JobGraph
+http://wuchong.me/blog/2016/05/10/flink-internals-how-to-build-jobgraph/
