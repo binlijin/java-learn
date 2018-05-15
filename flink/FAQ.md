@@ -1,2 +1,2 @@
-(1)namespace
+(1)state里面的namespace
 WindowedState是在WindowedStream上使用的state，用于保存一个window内的数据。由于同一个key下面可能会有多个window，因此Flink引入了namespace来唯一标识window。
