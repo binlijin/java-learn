@@ -6,3 +6,5 @@ https://cwiki.apache.org/confluence/display/FLINK/Type+System%2C+Type+Extraction
 
 TypeInformation  
 http://www.cnblogs.com/fxjwind/p/6294237.html
+
+TypeExtractor/TypeExtractorTest
