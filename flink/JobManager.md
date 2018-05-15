@@ -9,17 +9,16 @@ The job manager is responsible for receiving Flink jobs, scheduling the tasks, g
 - （4） - [[UpdateTaskExecutionState]] is sent by a TaskManager to update the state of an ExecutionVertex contained in the [[ExecutionGraph]]. A successful update is acknowledged by true and otherwise false.
 - （5） - [[RequestNextInputSplit]] requests the next input split for a running task on a [[TaskManager]]. The assigned input split or null is sent to the sender in the form of the message [[NextInputSplit]].
 - （6）- [[JobStatusChanged]] indicates that the status of job (RUNNING, CANCELING, FINISHED, etc.) has changed. This message is sent by the ExecutionGraph.
-
-
+  
+  
 YarnApplicationMasterRunner
  * This class is the executable entry point for the YARN application master.
  * It starts actor system and the actors for {@link JobManager}
  * and {@link YarnFlinkResourceManager}.
- *
  * <p>The JobManager handles Flink job execution, while the YarnFlinkResourceManager handles container
  * allocation and failure detection.
-
-
+  
+  
 Flink JobManager 基本组件  
 http://chenyuzhao.me/2017/02/08/jobmanager%E5%9F%BA%E6%9C%AC%E7%BB%84%E4%BB%B6/
 
