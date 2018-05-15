@@ -35,9 +35,12 @@ Operator
 （3）Sink Operator
 Operator Chain
 
+内存管理
 类型，序列化/反序列化
 
 通信：
-（1）
-（2）
+（1）Akka
+JobClient，JobManager，TaskManager通信
+（2）Netty
+数据传输
 （3）
