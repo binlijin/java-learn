@@ -1,0 +1,8 @@
+Jobs and Scheduling
+https://ci.apache.org/projects/flink/flink-docs-release-1.4/internals/job_scheduling.html
+
+Flink Scheduler
+http://chenyuzhao.me/2017/02/09/flink-scheduler/
+
+Flink 原理与实现：理解 Flink 中的计算资源
+http://wuchong.me/blog/2016/05/09/flink-internals-understanding-execution-resources/
