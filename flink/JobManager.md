@@ -1,6 +1,14 @@
 JobManager
 
+JobManager.scala
+
 The job manager is responsible for receiving Flink jobs, scheduling the tasks, gathering the job status and managing the task managers. 
+- （1）[[RegisterTaskManager]] is sent by a TaskManager which wants to register at the job manager. A successful registration at the instance manager is acknowledged by [[AcknowledgeRegistration]]
+- （2）- [[SubmitJob]] is sent by a client which wants to submit a job to the system. The submit message contains the job description in the form of the JobGraph. The JobGraph is appended to the ExecutionGraph and the corresponding ExecutionJobVertices are scheduled for execution on the TaskManagers.
+- （3）- [[CancelJob]] requests to cancel the job with the specified jobID. A successful cancellation is indicated by [[CancellationSuccess]] and a failure by [[CancellationFailure]]
+- （4） - [[UpdateTaskExecutionState]] is sent by a TaskManager to update the state of an ExecutionVertex contained in the [[ExecutionGraph]]. A successful update is acknowledged by true and otherwise false.
+- （5） - [[RequestNextInputSplit]] requests the next input split for a running task on a [[TaskManager]]. The assigned input split or null is sent to the sender in the form of the message [[NextInputSplit]].
+- （6）- [[JobStatusChanged]] indicates that the status of job (RUNNING, CANCELING, FINISHED, etc.) has changed. This message is sent by the ExecutionGraph.
 
 
 Flink JobManager 基本组件  
