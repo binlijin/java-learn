@@ -1,0 +1,21 @@
+数据输入输出
+
+Flink 网络栈
+http://chenyuzhao.me/2017/02/09/flink%E7%BD%91%E7%BB%9C%E6%A0%88/
+
+http://vinoyang.com/2016/12/20/flink-runtime-unified-data-exchange/
+
+Flink运行时之结果分区消费端
+http://vinoyang.com/2017/01/04/flink-runtime-consumer-input-gate/
+http://vinoyang.com/2016/12/14/flink-runtime-NetworkEnvironment/
+http://vinoyang.com/2016/12/28/flink-runtime-communicate-api/
+http://vinoyang.com/2016/12/30/flink-runtime-producer-result-partition/
+http://vinoyang.com/2017/01/04/flink-runtime-consumer-input-gate/
+
+http://vinoyang.com/2017/01/08/flink-runtime-netty-part-1/
+http://vinoyang.com/2017/01/12/flink-runtime-netty-part-2/
+http://vinoyang.com/2017/01/15/flink-runtime-netty-part-3/
+
+Data exchange between tasks
+https://cwiki.apache.org/confluence/display/FLINK/Data+exchange+between+tasks
+
