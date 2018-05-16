@@ -24,14 +24,14 @@ http://vinoyang.com/2017/01/24/flink-runtime-taskmanager-run-task/
 入口是 YarnTaskExecutorRunner  
   TaskManagerRunner  
   TaskManagerServices  
-      NetworkEnvironment   
-      MemoryManager  
-      IOManager  
-      BroadcastVariableManager  
-      FileCache  
-      TimerService  
-      TaskSlotTable  
-      JobManagerTable  
-      JobLeaderService  
-  TaskExecutor  
+    NetworkEnvironment   
+    MemoryManager  
+    IOManager  
+    BroadcastVariableManager  
+    FileCache  
+    TimerService  
+    TaskSlotTable  
+    JobManagerTable  
+    JobLeaderService  
+  TaskExecutor  
 
