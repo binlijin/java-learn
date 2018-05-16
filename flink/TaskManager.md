@@ -22,8 +22,8 @@ http://vinoyang.com/2017/01/24/flink-runtime-taskmanager-run-task/
 
 
 入口是 YarnTaskExecutorRunner  
-  TaskManagerRunner  
-  TaskManagerServices  
+1. TaskManagerRunner  
+1. TaskManagerServices  
     NetworkEnvironment   
     MemoryManager  
     IOManager  
@@ -33,5 +33,5 @@ http://vinoyang.com/2017/01/24/flink-runtime-taskmanager-run-task/
     TaskSlotTable  
     JobManagerTable  
     JobLeaderService  
-  TaskExecutor  
+1. TaskExecutor  
 
