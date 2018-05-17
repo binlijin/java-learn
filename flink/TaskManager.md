@@ -34,4 +34,5 @@ http://vinoyang.com/2017/01/24/flink-runtime-taskmanager-run-task/
    1. JobManagerTable  
    1. JobLeaderService  
 1. TaskExecutor  
-
+  
+Task执行用户逻辑前会从job manager下载所需的jar
