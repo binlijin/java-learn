@@ -6,3 +6,14 @@ http://chenyuzhao.me/2017/02/09/flink-scheduler/
 
 Flink 原理与实现：理解 Flink 中的计算资源
 http://wuchong.me/blog/2016/05/09/flink-internals-understanding-execution-resources/
+
+低于流默认是EAGER
+StreamingJobGraphGenerator
+	private JobGraph createJobGraph() {
+
+		// make sure that all vertices start immediately
+		jobGraph.setScheduleMode(ScheduleMode.EAGER);
+    ......
+ }
+ 
+ 
