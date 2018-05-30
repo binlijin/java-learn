@@ -1,0 +1,29 @@
+
+JobStatus转成JobStatus.RUNNING时启动checkpoint scheduler
+CheckpointCoordinator是定期执行
+
+
+Apache Flink数据流的Fault Tolerance机制
+http://vinoyang.com/2016/05/22/flink-data-streaming-fault-tolerancer/
+
+
+(1)执行checkpoint
+JobMaster
+（1）发送消息到所有的tasksToTrigger，触发他们的checkpoint
+（2）等所有的tasksToWaitFor都收到ask后，保存记录CompletedCheckpoint
+
+
+TaskManager
+  Task.triggerCheckpointBarrier
+  主线程处理的时候需要对checkpointLock加锁，checkpoint的时候同样需要对checkpointLock加锁，确保执行checkpoint的时候没有数据在处理。
+  
+source operator开始checkpoint是JobMaster通过rpc触发的。
+CheckpointBarrier
+下游的task什么时候开始触发？
+BarrierBuffer/BarrierTracker 做为Task的输入接口，处理CheckpointBarrier event的时候触发checkpoint。
+
+
+
+(2)restore 
+
+
