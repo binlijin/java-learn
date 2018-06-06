@@ -4,3 +4,27 @@ https://blog.csdn.net/yanghua_kobe/article/list/1? or http://vinoyang.com/
 http://wuchong.me/
 
 http://chenyuzhao.me/
+
+A list of introduction resources to learn Streaming and Apache Flink
+
+Beginner:
+1. Blog - Streaming101: https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-101
+2. Blog - Streaming102: https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-102 
+3. Blog series - Introduction to Flink Streaming
+  http://blog.madhukaraphatak.com/introduction-to-flink-streaming-part-1/
+  http://blog.madhukaraphatak.com/introduction-to-flink-streaming-part-2/
+  http://blog.madhukaraphatak.com/introduction-to-flink-streaming-part-3/
+  http://blog.madhukaraphatak.com/introduction-to-flink-streaming-part-5/
+  http://blog.madhukaraphatak.com/introduction-to-flink-streaming-part-6/
+  http://blog.madhukaraphatak.com/introduction-to-flink-streaming-part-7/
+  http://blog.madhukaraphatak.com/introduction-to-flink-streaming-part-8/
+  http://blog.madhukaraphatak.com/introduction-to-flink-streaming-part-9/
+  http://blog.madhukaraphatak.com/introduction-to-flink-streaming-part-10/
+
+Intermediate:
+4. Web - Introduction to Apache Flink: https://flink.apache.org/introduction.html
+5. Book - Introduction to Apache Flink by Ellen Friedman & Kostas Tzoumas (pdf can be found via google search)
+
+Experienced:
+6. Book - Stream Processing with Apache Flink by Fabian Hueske & Vasiliki Kalavri (preview available; book coming out in July 2018)
+7. Flink bi-annual conference: https://flink-forward.org/ (videos can be viewed via YouTube)
