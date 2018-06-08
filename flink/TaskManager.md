@@ -20,7 +20,7 @@ http://vinoyang.com/2017/01/24/flink-runtime-taskmanager-run-task/
 - (2) 而处理该消息的入口方法是submitTask方法，它是TaskManager接收任务部署并启动任务执行的入口方法  
   TaskManager#submitTask  TaskManager.scala
 
-
+YarnResourceManager#createTaskExecutorLaunchContext ContainerLaunchContext
 入口是 YarnTaskExecutorRunner  
 1. TaskManagerRunner  
 1. TaskManagerServices  
