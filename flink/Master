@@ -1,0 +1,9 @@
+FLIP-6 - Flink Deployment and Process Model - Standalone, Yarn, Mesos, Kubernetes, etc.
+https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=65147077
+
+FlinkYarnSessionCli:
+(1) Flip6YarnClusterDescriptor
+    YarnSessionClusterEntrypoint
+    YarnJobClusterEntrypoint
+(2) YarnClusterDescriptor
+    YarnApplicationMasterRunner
