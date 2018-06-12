@@ -6,3 +6,5 @@ http://vinoyang.com/2017/03/31/flink-runtime-client-submit-jobgraph/
 
 Flink运行时之客户端提交作业图-下  
 http://vinoyang.com/2017/04/02/flink-runtime-client-submit-jobgraph-submitJob-method/
+  
+FlinkYarnSessionCli
