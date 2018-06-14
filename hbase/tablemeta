@@ -1,0 +1,3 @@
+（1）table disable状态记在zk上，如果清zk，disable的table就变成enable了
+（2）HTableDescriptor 记在hdfs上
+（3）Region信息记在meta表中
