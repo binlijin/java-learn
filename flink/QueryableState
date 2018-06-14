@@ -1,0 +1,38 @@
+
+https://ci.apache.org/projects/flink/flink-docs-release-1.5/dev/stream/state/queryable_state.html
+
+http://vishnuviswanath.com/flink_queryable_state1.html
+
+http://vishnuviswanath.com/flink_queryable_state2.html
+
+
+Client:
+QueryableStateClient
+
+ * Client for querying Flink's managed state.
+ *
+ * <p>You can mark state as queryable via {@link StateDescriptor#setQueryable(String)}.
+ * The state instance created from this descriptor will be published for queries when it's
+ * created on the Task Managers and the location will be reported to the Job Manager.
+ *
+ * <p>The client connects to a {@code Client Proxy} running on a given Task Manager. The
+ * proxy is the entry point of the client to the Flink cluster. It forwards the requests
+ * of the client to the Job Manager and the required Task Manager, and forwards the final
+ * response back the client.
+ *
+ * <p>The proxy, initially resolves the location of the requested KvState via the JobManager. Resolved
+ * locations are cached. When the server address of the requested KvState instance is determined, the
+ * client sends out a request to the server. The returned final answer is then forwarded to the Client.
+
+
+JobManager:
+
+
+
+TaskManagers:
+
+
+
+
+
+

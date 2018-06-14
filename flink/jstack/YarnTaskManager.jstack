@@ -1,0 +1,346 @@
+2018-06-12 14:45:16
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.162-b12 mixed mode):
+
+"Attach Listener" #42 daemon prio=9 os_prio=31 tid=0x00007f8926049800 nid=0x1107 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Timer-1" #41 daemon prio=5 os_prio=31 tid=0x00007f8924d13800 nid=0x6a03 in Object.wait() [0x000070000b41d000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00000007b7b79948> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:552)
+	- locked <0x00000007b7b79948> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:505)
+
+"Timer-0" #39 daemon prio=5 os_prio=31 tid=0x00007f892471f800 nid=0x6903 in Object.wait() [0x000070000b31a000]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00000007b7b63b00> (a java.util.TaskQueue)
+	at java.util.TimerThread.mainLoop(Timer.java:552)
+	- locked <0x00000007b7b63b00> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:505)
+
+"flink-akka.remote.default-remote-dispatcher-15" #37 prio=5 os_prio=31 tid=0x00007f892606f800 nid=0x9803 waiting on condition [0x000070000b217000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000007a58254b8> (a akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinPool)
+	at scala.concurrent.forkjoin.ForkJoinPool.scan(ForkJoinPool.java:2075)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+
+"Hashed wheel timer #1" #20 prio=5 os_prio=31 tid=0x00007f8923ff5000 nid=0x6703 waiting on condition [0x000070000b114000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at org.apache.flink.shaded.akka.org.jboss.netty.util.HashedWheelTimer$Worker.waitForNextTick(HashedWheelTimer.java:445)
+	at org.apache.flink.shaded.akka.org.jboss.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:364)
+	at org.apache.flink.shaded.akka.org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at java.lang.Thread.run(Thread.java:748)
+
+"IOManager reader thread #1" #33 daemon prio=5 os_prio=31 tid=0x00007f892548f800 nid=0x6503 waiting on condition [0x000070000b011000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000007b73fbb18> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+	at org.apache.flink.runtime.io.disk.iomanager.IOManagerAsync$ReaderThread.run(IOManagerAsync.java:380)
+
+"IOManager writer thread #1" #32 daemon prio=5 os_prio=31 tid=0x00007f892548e800 nid=0x6403 waiting on condition [0x000070000af0e000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000007b73f5820> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+	at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+	at org.apache.flink.runtime.io.disk.iomanager.IOManagerAsync$WriterThread.run(IOManagerAsync.java:486)
+
+"Flink Netty Server (0) Thread 0" #29 daemon prio=5 os_prio=31 tid=0x00007f89254ed000 nid=0x6207 runnable [0x000070000ae0b000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.KQueueArrayWrapper.kevent0(Native Method)
+	at sun.nio.ch.KQueueArrayWrapper.poll(KQueueArrayWrapper.java:198)
+	at sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:117)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:86)
+	- locked <0x00000007a8e00360> (a org.apache.flink.shaded.netty4.io.netty.channel.nio.SelectedSelectionKeySet)
+	- locked <0x00000007a8e00380> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00000007a8e00310> (a sun.nio.ch.KQueueSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:97)
+	at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:622)
+	at org.apache.flink.shaded.netty4.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:310)
+	at org.apache.flink.shaded.netty4.io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:111)
+	at java.lang.Thread.run(Thread.java:748)
+
+"flink-akka.remote.default-remote-dispatcher-14" #26 prio=5 os_prio=31 tid=0x00007f8924504000 nid=0x9b03 waiting on condition [0x000070000ad08000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000007a58254b8> (a akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinPool)
+	at scala.concurrent.forkjoin.ForkJoinPool.scan(ForkJoinPool.java:2075)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+
+"flink-akka.remote.default-remote-dispatcher-13" #25 prio=5 os_prio=31 tid=0x00007f8924c51800 nid=0x9c03 waiting on condition [0x000070000ac05000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000007a58254b8> (a akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinPool)
+	at scala.concurrent.forkjoin.ForkJoinPool.idleAwaitWork(ForkJoinPool.java:2135)
+	at scala.concurrent.forkjoin.ForkJoinPool.scan(ForkJoinPool.java:2067)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+
+"New I/O server boss #6" #24 prio=5 os_prio=31 tid=0x00007f8926041000 nid=0x6003 runnable [0x000070000ab02000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.KQueueArrayWrapper.kevent0(Native Method)
+	at sun.nio.ch.KQueueArrayWrapper.poll(KQueueArrayWrapper.java:198)
+	at sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:117)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:86)
+	- locked <0x00000007a5c26048> (a sun.nio.ch.Util$3)
+	- locked <0x00000007a5c26038> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00000007a5c25c28> (a sun.nio.ch.KQueueSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:97)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:101)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.NioServerBoss.select(NioServerBoss.java:163)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:212)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.NioServerBoss.run(NioServerBoss.java:42)
+	at org.apache.flink.shaded.akka.org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.apache.flink.shaded.akka.org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+"New I/O worker #5" #23 prio=5 os_prio=31 tid=0x00007f8924540800 nid=0x9f03 runnable [0x000070000a9ff000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.KQueueArrayWrapper.kevent0(Native Method)
+	at sun.nio.ch.KQueueArrayWrapper.poll(KQueueArrayWrapper.java:198)
+	at sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:117)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:86)
+	- locked <0x00000007a5c25278> (a sun.nio.ch.Util$3)
+	- locked <0x00000007a5c25268> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00000007a5c25148> (a sun.nio.ch.KQueueSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:97)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.SelectorUtil.select(SelectorUtil.java:68)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.AbstractNioSelector.select(AbstractNioSelector.java:434)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:212)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.apache.flink.shaded.akka.org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.apache.flink.shaded.akka.org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+"New I/O worker #4" #22 prio=5 os_prio=31 tid=0x00007f8923b5f000 nid=0xa103 runnable [0x000070000a8fc000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.KQueueArrayWrapper.kevent0(Native Method)
+	at sun.nio.ch.KQueueArrayWrapper.poll(KQueueArrayWrapper.java:198)
+	at sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:117)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:86)
+	- locked <0x00000007a5c24d88> (a sun.nio.ch.Util$3)
+	- locked <0x00000007a5c24d78> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00000007a5c24c48> (a sun.nio.ch.KQueueSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:97)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.SelectorUtil.select(SelectorUtil.java:68)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.AbstractNioSelector.select(AbstractNioSelector.java:434)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:212)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.apache.flink.shaded.akka.org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.apache.flink.shaded.akka.org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+"New I/O boss #3" #21 prio=5 os_prio=31 tid=0x00007f8923b5e000 nid=0xa303 runnable [0x000070000a7f9000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.KQueueArrayWrapper.kevent0(Native Method)
+	at sun.nio.ch.KQueueArrayWrapper.poll(KQueueArrayWrapper.java:198)
+	at sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:117)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:86)
+	- locked <0x00000007a5c308e0> (a sun.nio.ch.Util$3)
+	- locked <0x00000007a5c308d0> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00000007a5c307b0> (a sun.nio.ch.KQueueSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:97)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.SelectorUtil.select(SelectorUtil.java:68)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.AbstractNioSelector.select(AbstractNioSelector.java:434)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:212)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.NioClientBoss.run(NioClientBoss.java:42)
+	at org.apache.flink.shaded.akka.org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.apache.flink.shaded.akka.org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+"New I/O worker #2" #19 prio=5 os_prio=31 tid=0x00007f8927046000 nid=0x5f03 runnable [0x000070000a6f6000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.KQueueArrayWrapper.kevent0(Native Method)
+	at sun.nio.ch.KQueueArrayWrapper.poll(KQueueArrayWrapper.java:198)
+	at sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:117)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:86)
+	- locked <0x00000007a5c34c00> (a sun.nio.ch.Util$3)
+	- locked <0x00000007a5c34bf0> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00000007a5c34ad0> (a sun.nio.ch.KQueueSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:97)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.SelectorUtil.select(SelectorUtil.java:68)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.AbstractNioSelector.select(AbstractNioSelector.java:434)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:212)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.apache.flink.shaded.akka.org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.apache.flink.shaded.akka.org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+"New I/O worker #1" #18 prio=5 os_prio=31 tid=0x00007f8926868800 nid=0xa503 runnable [0x000070000a5f3000]
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.KQueueArrayWrapper.kevent0(Native Method)
+	at sun.nio.ch.KQueueArrayWrapper.poll(KQueueArrayWrapper.java:198)
+	at sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:117)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:86)
+	- locked <0x00000007a5c350f0> (a sun.nio.ch.Util$3)
+	- locked <0x00000007a5c350e0> (a java.util.Collections$UnmodifiableSet)
+	- locked <0x00000007a5c34fc0> (a sun.nio.ch.KQueueSelectorImpl)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:97)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.SelectorUtil.select(SelectorUtil.java:68)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.AbstractNioSelector.select(AbstractNioSelector.java:434)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:212)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.apache.flink.shaded.akka.org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.apache.flink.shaded.akka.org.jboss.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.apache.flink.shaded.akka.org.jboss.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+"flink-akka.remote.default-remote-dispatcher-5" #17 prio=5 os_prio=31 tid=0x00007f8926866000 nid=0x5d03 waiting on condition [0x000070000a4f0000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000007a58254b8> (a akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinPool)
+	at scala.concurrent.forkjoin.ForkJoinPool.scan(ForkJoinPool.java:2075)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+
+"flink-akka.actor.default-dispatcher-4" #16 prio=5 os_prio=31 tid=0x00007f8925327800 nid=0x5b03 waiting on condition [0x000070000a3ed000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000007a583b948> (a akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinPool)
+	at scala.concurrent.forkjoin.ForkJoinPool.idleAwaitWork(ForkJoinPool.java:2135)
+	at scala.concurrent.forkjoin.ForkJoinPool.scan(ForkJoinPool.java:2067)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+
+"flink-akka.actor.default-dispatcher-3" #15 prio=5 os_prio=31 tid=0x00007f8924c3e800 nid=0xa703 waiting on condition [0x000070000a2ea000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000007a583b948> (a akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinPool)
+	at scala.concurrent.forkjoin.ForkJoinPool.scan(ForkJoinPool.java:2075)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+
+"flink-akka.actor.default-dispatcher-2" #14 prio=5 os_prio=31 tid=0x00007f8924c38000 nid=0x5803 waiting on condition [0x000070000a1e7000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000007a583b948> (a akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinPool)
+	at scala.concurrent.forkjoin.ForkJoinPool.scan(ForkJoinPool.java:2075)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+
+"flink-scheduler-1" #13 prio=5 os_prio=31 tid=0x00007f8925285800 nid=0xa807 waiting on condition [0x000070000a0e4000]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at akka.actor.LightArrayRevolverScheduler.waitNanos(LightArrayRevolverScheduler.scala:85)
+	at akka.actor.LightArrayRevolverScheduler$$anon$4.nextTick(LightArrayRevolverScheduler.scala:266)
+	at akka.actor.LightArrayRevolverScheduler$$anon$4.run(LightArrayRevolverScheduler.scala:236)
+	at java.lang.Thread.run(Thread.java:748)
+
+"Service Thread" #9 daemon prio=9 os_prio=31 tid=0x00007f8924814800 nid=0x3b03 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C1 CompilerThread3" #8 daemon prio=9 os_prio=31 tid=0x00007f8924040800 nid=0x3803 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread2" #7 daemon prio=9 os_prio=31 tid=0x00007f8924040000 nid=0x3e03 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" #6 daemon prio=9 os_prio=31 tid=0x00007f8924830000 nid=0x3703 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" #5 daemon prio=9 os_prio=31 tid=0x00007f8923822800 nid=0x4003 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" #4 daemon prio=9 os_prio=31 tid=0x00007f8923811000 nid=0x340b runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" #3 daemon prio=8 os_prio=31 tid=0x00007f892500f800 nid=0x4903 in Object.wait() [0x00007000098cc000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00000007a581de38> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+	- locked <0x00000007a581de38> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:164)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:212)
+
+"Reference Handler" #2 daemon prio=10 os_prio=31 tid=0x00007f892380e800 nid=0x4b03 in Object.wait() [0x00007000097c9000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00000007a584b300> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:502)
+	at java.lang.ref.Reference.tryHandlePending(Reference.java:191)
+	- locked <0x00000007a584b300> (a java.lang.ref.Reference$Lock)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:153)
+
+"main" #1 prio=5 os_prio=31 tid=0x00007f8926001800 nid=0x1603 waiting on condition [0x0000700008daa000]
+   java.lang.Thread.State: WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0x00000007b77cc170> (a scala.concurrent.impl.Promise$CompletionLatch)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.parkAndCheckInterrupt(AbstractQueuedSynchronizer.java:836)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireSharedInterruptibly(AbstractQueuedSynchronizer.java:997)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(AbstractQueuedSynchronizer.java:1304)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryAwait(Promise.scala:206)
+	at scala.concurrent.impl.Promise$DefaultPromise.ready(Promise.scala:222)
+	at scala.concurrent.impl.Promise$DefaultPromise.ready(Promise.scala:157)
+	at scala.concurrent.Await$$anonfun$ready$1.apply(package.scala:169)
+	at scala.concurrent.Await$$anonfun$ready$1.apply(package.scala:169)
+	at scala.concurrent.BlockContext$DefaultBlockContext$.blockOn(BlockContext.scala:53)
+	at scala.concurrent.Await$.ready(package.scala:169)
+	at akka.actor.ActorSystemImpl.awaitTermination(ActorSystem.scala:844)
+	at akka.actor.ActorSystemImpl.awaitTermination(ActorSystem.scala:845)
+	at org.apache.flink.runtime.taskmanager.TaskManager$.runTaskManager(TaskManager.scala:1879)
+	at org.apache.flink.runtime.taskmanager.TaskManager$$anonfun$1.apply$mcV$sp(TaskManager.scala:1944)
+	at org.apache.flink.runtime.taskmanager.TaskManager$$anonfun$1.apply(TaskManager.scala:1922)
+	at org.apache.flink.runtime.taskmanager.TaskManager$$anonfun$1.apply(TaskManager.scala:1922)
+	at scala.util.Try$.apply(Try.scala:192)
+	at org.apache.flink.runtime.akka.AkkaUtils$.retryOnBindException(AkkaUtils.scala:755)
+	at org.apache.flink.runtime.taskmanager.TaskManager$.runTaskManager(TaskManager.scala:1922)
+	at org.apache.flink.runtime.taskmanager.TaskManager$.selectNetworkInterfaceAndRunTaskManager(TaskManager.scala:1691)
+	at org.apache.flink.runtime.taskmanager.TaskManager.selectNetworkInterfaceAndRunTaskManager(TaskManager.scala)
+	at org.apache.flink.yarn.YarnTaskManagerRunnerFactory$Runner.call(YarnTaskManagerRunnerFactory.java:73)
+	at org.apache.flink.runtime.security.HadoopSecurityContext$$Lambda$6/501705927.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:422)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1698)
+	at org.apache.flink.runtime.security.HadoopSecurityContext.runSecured(HadoopSecurityContext.java:41)
+	at org.apache.flink.yarn.YarnTaskManager$.main(YarnTaskManager.scala:75)
+	at org.apache.flink.yarn.YarnTaskManager.main(YarnTaskManager.scala)
+
+"VM Thread" os_prio=31 tid=0x00007f8924052800 nid=0x4d03 runnable 
+
+"GC task thread#0 (ParallelGC)" os_prio=31 tid=0x00007f8924015800 nid=0x1b07 runnable 
+
+"GC task thread#1 (ParallelGC)" os_prio=31 tid=0x00007f8924016000 nid=0x1d03 runnable 
+
+"GC task thread#2 (ParallelGC)" os_prio=31 tid=0x00007f8924016800 nid=0x5403 runnable 
+
+"GC task thread#3 (ParallelGC)" os_prio=31 tid=0x00007f8924017000 nid=0x2b03 runnable 
+
+"GC task thread#4 (ParallelGC)" os_prio=31 tid=0x00007f8923800800 nid=0x2c03 runnable 
+
+"GC task thread#5 (ParallelGC)" os_prio=31 tid=0x00007f8923801000 nid=0x2d03 runnable 
+
+"GC task thread#6 (ParallelGC)" os_prio=31 tid=0x00007f8923802000 nid=0x2e03 runnable 
+
+"GC task thread#7 (ParallelGC)" os_prio=31 tid=0x00007f8923802800 nid=0x4f03 runnable 
+
+"VM Periodic Task Thread" os_prio=31 tid=0x00007f892481f800 nid=0x3a03 waiting on condition 
+
+JNI global references: 248
+
