@@ -8,3 +8,13 @@ TypeInformation
 http://www.cnblogs.com/fxjwind/p/6294237.html
 
 TypeExtractor/TypeExtractorTest
+
+
+
+TypeSerializer
+PojoSerializer/KryoSerializer
+
+
+
+FlinkUserCodeClassLoaders
+
