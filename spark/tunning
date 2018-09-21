@@ -1,0 +1,8 @@
+
+https://spark.apache.org/docs/latest/tuning.html
+
+By default, Java objects are fast to access, but can easily consume a factor of 2-5x more space than the “raw” data inside their fields. 
+
+Execution memory refers to that used for computation in shuffles, joins, sorts and aggregations, while storage memory refers to that used for caching and propagating internal data across the cluster.
+
+
