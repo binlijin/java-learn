@@ -1,0 +1,42 @@
+<?xml version="1.0"?> 
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?> 
+
+<!-- Put site-specific property overrides in this file. --> 
+
+<configuration> 
+
+<property> 
+  <name>hive.metastore.local</name> 
+  <value>true</value> 
+</property> 
+
+<property>
+  <name>hive.metastore.uris</name>
+  <value>thrift://127.0.0.1:9083</value>
+</property>
+
+<property> 
+  <name>javax.jdo.option.ConnectionURL</name> 
+  <value>jdbc:mysql://localhost:3306/hive?createDatabaseIfNotExist=true</value> 
+  <description>JDBC connect string FOR a JDBC metastore</description> 
+</property> 
+
+<property> 
+  <name>javax.jdo.option.ConnectionDriverName</name> 
+  <value>com.mysql.jdbc.Driver</value> 
+  <description>Driver class name FOR a JDBC metastore</description> 
+</property> 
+
+<property> 
+  <name>javax.jdo.option.ConnectionUserName</name> 
+  <value>hive</value> 
+  <description>username TOUSE against metastore database</description> 
+</property> 
+<property> 
+  <name>javax.jdo.option.ConnectionPassword</name> 
+  <value>123456</value> 
+  <description>password TOUSE against metastore database</description> 
+</property> 
+
+</configuration> 
+
