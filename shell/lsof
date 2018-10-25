@@ -1,0 +1,15 @@
+cat /proc/meminfo 
+
+df -h
+
+lsof /dump/1 | grep "GeminiMMapFile_4" | wc -l
+
+
+sudo lsof /dump/1 | grep deleted
+
+iostat -xk 1
+
+
+top -p 150200
+
+

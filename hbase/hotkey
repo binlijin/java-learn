@@ -1,0 +1,85 @@
+(1) 热点key
+  处理很快，就是耗cpu
+  根据处理的Cells数来判断？
+(2) 大行
+(3) 读本地hdfs
+      ShortCircuitCache
+(4) 读远程hdfs
+(5) hdfs响应慢（网络）
+写handler打满
+(6) gc
+
+
+
+Basic client pushback mechanism
+https://issues.apache.org/jira/browse/HBASE-5162
+
+
+
+(1) CoDel
+Explore different queuing behaviors while busy
+https://issues.apache.org/jira/browse/HBASE-15136
+
+(2) 按Region分队列
+
+(3) 隔离导致问题的 region
+发现问题手动隔离
+动态检测出问题的region，自动隔离（难点是判断热点key）
+Good/Bad
+
+(4) rs-group功能
+
+(5) handler分组
+
+(6) New in CDH 5.4: Apache HBase Request Throttling
+https://blog.cloudera.com/blog/2015/05/new-in-cdh-5-4-apache-hbase-request-throttling/
+
+(7) Basic client pushback mechanism
+https://issues.apache.org/jira/browse/HBASE-5162
+
+
+（1）在Table上面加个属性，标识这个table是good还是bad，默认是good
+（2）有问题的时候 alter table 把table标识成bad 
+（3）handler增加一组bad handler，用于处理bad table的请求 
+（4）dispatch call请求的时候，获取table的属性如果标识是bad的话，dispatch到bad组
+
+
+（1）processing time
+（2）cells数目
+从这两个角度来检测出问题的region
+
+热点key通过 row cache coprocessor来解？
+
+
+isolate large query
+https://issues.apache.org/jira/browse/HBASE-18715
+
+热点key的请求qps是 1000 ，cells数是1000。
+1000000
+请求是 Get + filter 
+
+大行，超过一定量的cells数目，中断请求，交给单独的请求队列去处理？
+
+
+同一个key的请求到同一个队列？
+按照rowkey进行hash？
+（1）正常情况按照现在的方式随机dispatch
+（2）当queue堆积到一定程度的时候，按照region hash进行dispatch
+
+
+
+hbase-hadoop-regionserver-a98j01539.na61.log.6:2018-05-28 16:23:29,207 DEBUG [main] ipc.RWQueueRpcExecutor: RW.default writeQueues=14 writeHandlers=140 readQueues=19 readHandlers=182 scanQueues=7 scanHandlers=78
+
+
+19个queue，182个handler
+每个queue，对应10个handler左右
+
+
+clean的话，还是要定位出“问题region”，异常的时候隔离开
+
+还有一种解法，用一个map记录大行的读并发数，比如叫bigRowMap；在每次get或者scan一行结束的时候，判断一下该行的cell数是不是大于特定threshold（比如500），如果超过就 bigRowMap.putIfAbsent(row, new AtomicInteger()); 然后每次get之前先bigRowMap.get(row)，如果不是null看当前并发度，超过给定threshold就限流
+这个就是解CPU打满的问题，因为cpu消耗无法通过内部metrics衡量；其他的是可以通过占用的handler数和processingTime统计来度量的
+目前问题region的可能性，除了cpu消耗，其他都可以通过handler占用数和processingTime统计。cpu消耗用前面限制多列并发的方式可以控制。
+
+
+

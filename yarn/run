@@ -1,0 +1,20 @@
+
+bin/hadoop jar share/hadoop/mapreduce1/hadoop-examples-2.6.0-mr1-cdh5.13.1.jar wordcount /input /output
+
+
+bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.6.5.jar  wordcount /input /output
+
+
+bin/flink run -m localhost:8032  -yn 2 -yjm 1024 -ytm 1024 ./examples/batch/WordCount.jar --input hdfs://localhost:9000/input/hello.txt
+
+
+
+export YARN_CONF_DIR=/Users/tianzhao.blj/install/hadoop-2.7.6/etc/hadoop/
+
+
+bin/yarn-session.sh -n 4 -jm 1024 -tm 1024 -s 4 
+bin/flink run ./examples/batch/WordCount.jar --input hdfs://localhost:9000/input/hello.txt
+
+bin/flink run -m yarn-cluster  -yn 2 -yjm 1024 -ytm 1024 ./examples/batch/WordCount.jar --input hdfs://localhost:9000/input/hello.txt
+
+

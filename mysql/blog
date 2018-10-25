@@ -1,0 +1,12 @@
+
+mysql -u root -p
+
+
+https://blog.csdn.net/soslinken/article/details/78927963
+
+set password = password('123456');
+
+
+sudo /usr/local/mysql/support-files/mysql.server start
+
+

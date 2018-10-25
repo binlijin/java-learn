@@ -1,0 +1,22 @@
+假设本地分支名是branch-1.1.2，按照下面步骤：
+1. git checkout -b branch-1.1.2-EHB-408 branch-1.1.2
+2. git push -u origin branch-1.1.2-EHB-408:branch-1.1.2-EHB-408
+
+
+git fetch
+
+git rebase origin/master
+
+
+git rebase -i f6894474d1cc3895ef56aab4372c7a672ffb9ae6
+fixup
+fixup
+
+
+git show b6eae44f327315a8429c323b8ecf498c1a2cbcb2
+
+
+git cherry-pick b97b936cf1751200382cae6832ed2d9f194272a1
+
+
+

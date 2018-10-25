@@ -1,0 +1,56 @@
+
+Spark SQL中的聚合（Aggregate）实现
+https://zhuanlan.zhihu.com/p/26247950
+
+SparkSQL中的Sort实现
+https://zhuanlan.zhihu.com/p/25720730
+https://zhuanlan.zhihu.com/p/24433433
+
+
+Spark Shuffle原理及相关调优
+http://sharkdtu.com/posts/spark-shuffle.html
+
+
+Spark SQL 之 Join 实现
+http://sharkdtu.com/posts/spark-sql-join.html
+http://dongxicheng.org/framework-on-yarn/apache-spark-join-two-tables/
+https://blog.csdn.net/andybegin/article/details/78457392
+
+
+https://jaceklaskowski.gitbooks.io/spark-structured-streaming/
+
+StructuredStream StateStore机制
+https://www.cnblogs.com/luweiseu/p/7735821.html
+https://github.com/JerryLead/SparkInternals/blob/master/markdown/4-shuffleDetails.md
+
+
+* 为了获知 AppendOnlyMap 占用的内存空间，可以在每次扩展时都将 AppendOnlyMap reference 的所有 objects 大小都算一遍，然后加和，但这样做非常耗时。所以 Spark 设计了粗略的估算算法，算法时间复杂度是 O(1)，核心思想是利用 AppendOnlyMap 中每次 insert-aggregate record 后 result 的大小变化及一共 insert 的 records 的个数来估算大小，具体见 SizeTrackingAppendOnlyMap 和 SizeEstimator。 
+
+
+
+
+
+Join
+(1) broadcast join
+    1.1  hash表
+    1.2 p2p broadcast
+(2) hash join
+    2.1 hash表
+(3) sort merge join
+    3.1 sort算法和数据结构
+
+
+Aggregate
+（1）Sort Based Aggregate
+   1.1 sort算法
+（2）Hash Based Aggregation
+   2.1 HashMap
+
+
+Sort
+（1）无spill
+（2）有spill
+
+
+
+

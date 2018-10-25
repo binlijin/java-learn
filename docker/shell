@@ -1,0 +1,9 @@
+
+sudo docker exec -it `sudo docker ps -a | grep -v CONTAINER | awk '{print $1}'` bash
+
+
+sudo docker ps -a
+sudo docker exec -it  $ID bash
+
+
+

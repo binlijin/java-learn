@@ -1,0 +1,10 @@
+用vnc-server
+在dev.zmf上
+你装个VNC-Viewer-5.3.1-Windows-64bit
+然后用vnc viewer登陆到dev.zmf上
+上面天ip:2 ip是dev.zmf的ip
+
+下面是123456
+dev.zmf   10.101.74.52
+
+

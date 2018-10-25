@@ -1,0 +1,57 @@
+IntelliJ IDEA 快捷键
+
+Command + o  查找类
+
+
+https://blog.csdn.net/sky19891212/article/details/42842871
+command+X	剪切
+command+C	复制
+command+V	粘贴
+
+command+f	本页查找
+
+http://www.cnblogs.com/likwo/p/3750799.html
+注释Command + /
+
+
+格式化代码Command + shift + F
+
+
+* command+alt+L 格式化代码
+
+* command+f12可以显示当前文件的结构
+
+
+* command+alt+B 可以导航到一个抽象方法的实现代码
+
+⌘ Command
+⇧ Shift
+⌥ Option
+⌃ Control
+
+⌃H 显示当前类的层次结构
+⌘⇧H 显示方法层次结构
+⌃⌥H 显示调用层次结构
+
+
+⌘L 在当前文件跳转到某一行的指定处
+
+back   ⌘[  或者 ⌘⌥ ←
+
+⌘⌥← / ⌘⌥→ 退回 / 前进到上一个操作的地方
+
+
+⌘F12  类方法
+
+
+⌘+ 代码展开
+
+command+B
+
+
+Command-Ctrl-Shift-3: 对整个屏幕截屏，图片被保存到剪贴板（夹纸板）中。 
+
+
+Alt+回车 导入包,自动修正
+
+

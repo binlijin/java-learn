@@ -1,0 +1,13 @@
+
+bin/hdfs dfs -du -h hdfs://prod/hbase/data/default | grep " T "
+
+bin/hdfs dfs -du -h hdfs://prod/hbase
+
+bin/hbase hfile -m -f hdfs://prod/hbase/data/default/mapping..auction_new..cf..seller_id/bb1adefea183e62f69db9846a38ce0a3/a/0882c202ca4249b785d3477922415c40
+
+bin/hbase hfile -m -f file:///home/hadoop/b94d0c853814ccc319007a868c76fb21/cf/81bf0460ed10471c8062ad04fe6e23ad
+
+bin/hbase hfile -p  -w 0191:b2b-2144112546 -f file:///home/hadoop/b94d0c853814ccc319007a868c76fb21/cf/81bf0460ed10471c8062ad04fe6e23ad 
+
+
+

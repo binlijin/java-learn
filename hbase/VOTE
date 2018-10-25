@@ -1,0 +1,42 @@
+VOTE
+
+(1) rat check
+mvn apache-rat:check
+https://hbase.apache.org/book.html
+
+(2) built from source
+mvn clean package -DskipTests
+
+mvn -DskipTests package assembly:single
+
+
+(3) unit tests passed
+
+export MAVEN_OPTS="-Xmx6100M -XX:-UsePerfData"
+
+nohup mvn  -PrunAllTests  -DreuseForks=false  -Dmaven.test.redirectTestOutputToFile=true  -Dsurefire.rerunFailingTestsCount=2  -Dit.test=noItTest  -Dmaven.test.failure.ignore=true  -Dsurefire.testFailureIgnore=true  -Dmaven.test.error.ignore=true  clean install &
+
+mvn test -P runAllTests
+
+(4) LTT with 1M rows
+LoadTestTool
+
+bin/hbase ltt -write 1:10:100 -num_keys 1000000 -read 100:30 -num_tables 1 -data_block_encoding NONE -tn load_test_tool_NONE
+
+
+(5) ran basic shell commands
+
+
+(6) web UI
+
+
+(7) ITBLL
+ITBLL Loop 1 1B rows
+
+(8) md5sum 
+
+https://www.apache.org/info/verification.html
+https://www.cyberciti.biz/faq/pgp-tarball-file-signature-keys-verification/
+
+
+
