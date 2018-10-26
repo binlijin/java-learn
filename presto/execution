@@ -1,0 +1,68 @@
+presto是一个Master-Slave的架构，由一个Coordinator、多个worker组成以及Discovery Server和SDK，其中：
+1. 一个coordinator：负责解析SQL语句，生成执行计划，分发执行任务给Worker节点执行
+2. Worker节点负责查询任务的执行
+3. Discovery Server服务注册内嵌于Coordinator节点中，worker启动后将注册到Discovery Server上，Coordinator通过Discovery Server感知worker节点
+4. Client：presto SDK
+
+
+1. Presto SDK（StatementClient 类）使用HTTP协议 JSON序列化向Coordinator提交一个查询语句
+2. Coordinator（StatementResource类）收到查询请求后调用SqlParser解析SQL语句得到Statement对象，并将Statement封装成一个QueryExecution对象放入线程池中等待执行。
+3. Coordinator将createQuery处理结果包装成QueryResults返回给client，并设置nextUri
+4. Client判断nextUri非空则通过nextUri继续调用getQueryResults接口获取查询结果集，若nextUri为空则查询结束。
+
+
+
+(1)Presto cli
+
+StatementClient
+/v1/statement
+
+
+
+(2)Coordinator
+StatementResource
+
+SQL编译
+Presto编译sql为最终的物理执行计划大概分为5步，最终生成每个worker节点上运行的LocalExecutionPlan，这里不详细介绍执行计划生成过程，通过一个sql语句来理解执行计划生成之后的查询执行过程
+
+SQL -> Statement -> Analysis -> Plan -> SubPlan -> LocalExecutionPlan
+
+SQL -> Statement :  sqlParser.createStatement(sql, parsingOptions)
+
+Statement -> Analysis : analyzer.analyze(statement)
+
+Analysis -> Plan : logicalPlanner.plan(analysis)
+
+Plan -> SubPlan : PlanFragmenter.createSubPlans(session, metadata, nodePartitioningManager, plan, forceSingleNode)
+
+SubPlan -> LocalExecutionPlan : LocalExecutionPlanner.plan
+
+
+查询下发的流程如下：
+1. SDK通过HTTP协议提交SQL查询之后，查询请求封装成一个SqlQueryExecution对象交给Coordinator的SqlQueryManager#queryExecutor线程池去执行
+2. 每个SqlQueryExecution线程启动后对查询请求的SQL进行语法解析和优化并最终生成多个Stage的SqlStageExecution任务，每个SqlStageExecution任务仍然交给同样的线程池去执行
+3. 每个SqlStageExecution线程启动后每个Stage构造一个或者多个RemoteTask通过HTTP协议分配给远端的Worker节点执行
+4. Worker节点接收到taskUpdate请求之后，启动一个SqlTaskExecution线程将这个任务的每个Split包装成一个DirverSplitRunner对象交给Worker节点的TaskExecutor#executor线程池去执行
+
+
+StatementResource -> SqlQueryExecution -> SqlStateExecution -> HttpRemoteTask
+
+StatementResource -> SqlQueryExecution :  QueryManager.createQuery
+SqlQueryExecution -> SqlStateExecution :  SqlQueryScheduler.createStages
+SqlStateExecution -> HttpRemoteTask :  scheduleTask
+
+
+(3) Worker
+TaskResource
+
+TaskResource  ->  SqlTaskExecution  ->  DriverSplitRunner  ->  PrioritizedSplitRunner
+
+1. Worker节点将DirverSplitRunner封装成一个PrioritizedSplitRunner对象，放入pending split优先级队列中。每个Worker节点启动一定数目的线程进行计算（处理器个数*2）。
+2. 每个空闲的线程从队列中取出一个PrioritizedSplitRunner对象执行，如果执行完成一个周期，超过最大执行时间1秒钟，判断任务是否执行完成，如果完成，从allSplits队列中删除，如果没有，则放回pendingSplits队列中，等待下一轮调度。
+3. 每次调度执行，依次遍历所有operator, 尝试从上一个Operator消费一个Page对象并生产给下一个Operator 
+
+
+
+
+
+

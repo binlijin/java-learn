@@ -1,0 +1,11 @@
+
+Presto计算引擎是由若干个worker守护进程，以及一个coordinator进程组成。
+一个Presto Query经过SQL parser、optimizer、schedule最终会被物化成operator在worker守护进程中执行。这些operators由worker进程里面的计算线程负责驱动执行。与Hive、spark、flink不同的是，这些算子被调度时，并没有按照资源/slot调度的方式进行下发。算子被下发至worker后，会enqueue至一个running queue中，然后由worker进程内的计算线程，以分配时间片的方式对running queue中的operator进行调度执行。
+
+
+
+StatementResource
+SqlQueryManager
+SqlQueryExecution
+
+
