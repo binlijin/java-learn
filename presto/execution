@@ -62,6 +62,10 @@ TaskResource  ->  SqlTaskExecution  ->  DriverSplitRunner  ->  PrioritizedSplitR
 3. 每次调度执行，依次遍历所有operator, 尝试从上一个Operator消费一个Page对象并生产给下一个Operator 
 
 
+数据shuffle
+
+若当前stage需要上游stage计算结果作为Input时，ExchangeOperator为每一个Split创建一个HttpPageBufferClient对象，主动向上游Stage的Worker节点对应task的clientBuffer拉数据，而上游stage的task将计算结果暂存到clientBuffer对象中供下游获取
+
 
 
 
