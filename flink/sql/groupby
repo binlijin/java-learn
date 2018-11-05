@@ -1,0 +1,17 @@
+
+SELECT color, count(distinct id)
+FROM T
+GROUP BY color
+
+改成
+
+SELECT color, sum(cnt)
+FROM (
+  SELECT color, count(distinct id) as cnt
+  FROM T
+  GROUP BY color, MOD(HASH_CODE(id), 1024)
+)
+GROUP BY color
+
+解决热点
+
