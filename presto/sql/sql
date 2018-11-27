@@ -6,3 +6,13 @@ SELECT id,name FROM things ORDER BY id ASC, name ASC;
 SELECT sales.name,sales.id FROM sales LEFT OUTER JOIN things ON (sales.id = things.id) ORDER BY name ASC, id ASC;
 
 
+select md5('str’);
+
+select concat(name, ',', id) from sales;
+
+explain:
+
+explain SELECT sales.name,sales.id FROM sales LEFT OUTER JOIN things ON (sales.id = things.id) ORDER BY name ASC, id ASC;
+
+
+
