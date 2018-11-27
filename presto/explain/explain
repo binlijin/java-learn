@@ -1,0 +1,56 @@
+
+presto:default> explain select concat(name, ',', id) from sales;
+                                                 Query Plan
+-------------------------------------------------------------------------------------------------------------
+ - Output[_col0] => [concat:varchar]
+         _col0 := concat
+     - RemoteExchange[GATHER] => concat:varchar
+         - ScanProject[table = hive:default:sales, originalConstraint = true] => [concat:varchar]
+                 concat := "concat"("name", CAST(',' AS varchar), CAST("id" AS bigint))
+                 LAYOUT: default.sales
+                 name := HiveColumnHandle{name=name, hiveType=string, hiveColumnIndex=0, columnType=REGULAR}
+                 id := HiveColumnHandle{name=id, hiveType=int, hiveColumnIndex=1, columnType=REGULAR}
+
+(1 row)
+
+Query 20181127_070207_00000_rqmvq, FINISHED, 1 node
+Splits: 1 total, 1 done (100.00%)
+0:01 [0 rows, 0B] [0 rows/s, 0B/s]
+
+
+
+
+presto:default> explain SELECT sales.name,sales.id FROM sales LEFT OUTER JOIN things ON (sales.id = things.id) ORDER BY name ASC, id ASC;
+                                                                    Query Plan
+--------------------------------------------------------------------------------------------------------------------------------------------------
+ - Output[name, id] => [name:varchar, id:integer]
+     - Sort[name ASC_NULLS_LAST, id ASC_NULLS_LAST] => [name:varchar, id:integer]
+         - LocalExchange[SINGLE] () => name:varchar, id:integer
+             - RemoteExchange[GATHER] => name:varchar, id:integer
+                 - LeftJoin[("id" = "id_0")][$hashvalue, $hashvalue_13] => [name:varchar, id:integer]
+                     - RemoteExchange[REPARTITION][$hashvalue] => name:varchar, id:integer, $hashvalue:bigint
+                         - ScanProject[table = hive:default:sales, originalConstraint = true] => [name:varchar, id:integer, $hashvalue_12:bigint]
+                                 $hashvalue_12 := "combine_hash"(BIGINT '0', COALESCE("$operator$hash_code"("id"), 0))
+                                 LAYOUT: default.sales
+                                 name := HiveColumnHandle{name=name, hiveType=string, hiveColumnIndex=0, columnType=REGULAR}
+                                 id := HiveColumnHandle{name=id, hiveType=int, hiveColumnIndex=1, columnType=REGULAR}
+                     - LocalExchange[HASH][$hashvalue_13] ("id_0") => id_0:integer, $hashvalue_13:bigint
+                             Cost: {rows: 0, bytes: ?}
+                         - RemoteExchange[REPARTITION][$hashvalue_14] => id_0:integer, $hashvalue_14:bigint
+                                 Cost: {rows: 0, bytes: ?}
+                             - ScanProject[table = hive:default:things, originalConstraint = true] => [id_0:integer, $hashvalue_15:bigint]
+                                     Cost: {rows: 0, bytes: ?}/{rows: 0, bytes: ?}
+                                     $hashvalue_15 := "combine_hash"(BIGINT '0', COALESCE("$operator$hash_code"("id_0"), 0))
+                                     LAYOUT: default.things
+                                     id_0 := HiveColumnHandle{name=id, hiveType=int, hiveColumnIndex=0, columnType=REGULAR}
+                                     HiveColumnHandle{name=ds, hiveType=string, hiveColumnIndex=-1, columnType=PARTITION_KEY}
+                                         :: [[2011-10-23], [2011-10-24]]
+
+(1 row)
+
+Query 20181127_071009_00011_rqmvq, FINISHED, 1 node
+Splits: 1 total, 1 done (100.00%)
+0:01 [0 rows, 0B] [0 rows/s, 0B/s]
+
+
+

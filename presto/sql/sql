@@ -1,0 +1,8 @@
+
+SELECT name,id FROM sales ORDER BY name ASC, id ASC;
+
+SELECT id,name FROM things ORDER BY id ASC, name ASC;
+
+SELECT sales.name,sales.id FROM sales LEFT OUTER JOIN things ON (sales.id = things.id) ORDER BY name ASC, id ASC;
+
+
