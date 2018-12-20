@@ -10,7 +10,28 @@ https://blog.csdn.net/nxcatman/article/details/52765430?utm_source=blogxgwz2
 
 
 接收Query入口：
-StatementResource
+(1)StatementResource  http服务线程 接收query
+   SqlQueryManager里面创建SqlQueryExecution，扔到（query-scheduler-%s）这个线程池去执行。
+   （query-scheduler-%s）这个线程池是在SqlQueryManager里面构造的。
+(2) SqlQueryManager  query-scheduler-%s 线程池 执行query任务
+   运行SqlQueryExecution.start()
+   生成plan以及SqlQueryScheduler，SqlQueryScheduler.start会触发query真正执行
+(3) SqlQueryScheduler 在queryExecutor线程池里面运行
+   
+
+
+
+Main函数入口：
+PrestoServer
+
+
+（1）queryExecutor
+CoordinatorModule
+线程池没有限制大小，最大的是Integer.MAX_VALUE
+
+（2）schedulerExecutor
+CoordinatorModule
+线程池控制线程只有一个。
 
 
 

@@ -29,3 +29,31 @@ Joe	2
 
 
 
+
+create table if not exists alltypes (
+ bo1 boolean,
+ ti1 tinyint,
+ si1 smallint,
+ i1 int,
+ bi1 bigint,
+ f1 float,
+ d1 double,
+ de1 decimal,
+ ts1 timestamp,
+ da1 timestamp,
+ s1 string,
+ vc1 varchar(5),
+ m1 string,
+ l1 string,
+ st1 string
+) row format delimited fields terminated by '|'
+collection items terminated by ','
+map keys terminated by ':' stored as textfile;
+
+load data local inpath 'examples/files/alltypes.txt' overwrite into table alltypes;
+
+select * from alltypes;
+
+
+
+

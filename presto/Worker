@@ -11,6 +11,27 @@ https://blog.csdn.net/nxcatman/article/details/52765430?utm_source=blogxgwz2
 
 
 
+Main 入口 PrestoServer
+
+
+TaskResource
+SqlTaskManager
+TaskExecutor
+
+
+(1) TaskResource 接收http请求，通过 TaskResource.createOrUpdateTask 创建SqlTask
+    SqlTaskExecution构造函数中创建TaskHandle加入到TaskExecutor中。
+    SqlTaskExecution.addSources 会创建相应的DriverSplitRunner加入到TaskHandle的queue里面
+(2) TaskExecutor 
+    TaskRunner线程不停的从waitingSplits中task split运行。
+
+
+
+
+
+
+
+
 
 
 

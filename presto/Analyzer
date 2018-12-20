@@ -1,0 +1,42 @@
+
+Analyzer
+
+    public Analysis analyze(Statement statement)
+    {
+        Analysis analyzer = analyze(statement, false);
+
+        if (SystemSessionProperties.enableRewriterDependedAnalysis(session)) {
+            Statement rewrittenStatement = StatementRewrite.rewriteDependAnalysis(
+                    session, metadata, sqlParser, queryExplainer, statement, parameters, accessControl, analyzer);
+            analyzer = analyze(rewrittenStatement, false);
+        }
+        return analyzer;
+    }
+
+    public Analysis analyze(Statement statement, boolean isDescribe)
+    {
+        Statement rewrittenStatement = StatementRewrite.rewrite(session, metadata, sqlParser, queryExplainer, statement, parameters, accessControl);
+        Analysis analysis = new Analysis(rewrittenStatement, parameters, isDescribe);
+        StatementAnalyzer analyzer = new StatementAnalyzer(analysis, metadata, sqlParser, accessControl, session);
+        analyzer.analyze(rewrittenStatement, Optional.empty());
+        return analysis;
+    }
+
+
+StatementRewrite主要是??
+* DescribeInputRewrite
+* DescribeOutputRewrite
+* ShowQueriesRewrite
+* ShowStatsRewrite
+* ExplainRewrite
+
+DescribeInputRewrite
+主要是将原来的statement，提取输入列，其他部分(FROM\WHERE等)置空
+
+
+Analysis 存分析结果
+
+
+Query.accept(AstVisitor<R, C> visitor, C context)
+
+
