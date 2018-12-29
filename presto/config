@@ -1,0 +1,44 @@
+
+https://github.com/prestodb/presto/issues/9442
+
+
+java 11需要加个参数
+
+The solution was to add the flag -Djdk.attach.allowAttachSelf=true to ${presto-home}/etc/jvm.config
+
+
+
+
+http://mail.openjdk.java.net/pipermail/hotspot-dev/2016-June/023316.html
+
+
+Excerpt of JVM options:
+  -server
+  -Xmx120G
+  -Xms120G
+  -Xss2048k
+  -XX:+PreserveFramePointer
+  -XX:+UseG1GC
+  -XX:+UnlockExperimentalVMOptions
+  -XX:G1MaxNewSizePercent=20
+  -XX:G1HeapRegionSize=32M
+  -XX:+ExplicitGCInvokesConcurrent
+  -XX:+HeapDumpOnOutOfMemoryError
+  -XX:+PrintReferenceGC
+  -XX:+PrintGCCause
+  -XX:+PrintGCDateStamps
+  -XX:+PrintGCTimeStamps
+  -XX:+PrintGCDetails
+  -XX:+PrintClassHistogramAfterFullGC
+  -XX:+PrintClassHistogramBeforeFullGC
+  -XX:+PrintAdaptiveSizePolicy
+  -XX:+PrintSafepointStatistics
+  -XX:-OmitStackTraceInFastThrow
+  -XX:+UnlockDiagnosticVMOptions
+  -XX:+UnlockExperimentalVMOptions
+  -XX:-UseBiasedLocking
+  -XX:ReservedCodeCacheSize=512m
+
+
+
+

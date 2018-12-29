@@ -1,0 +1,27 @@
+
+https://groups.google.com/forum/#!topic/presto-users/2BRvL723VF4
+
+* Update to the recent release of Presto.  We are constantly making small fixes to make Presto more GC friendly. 
+* Make sure you are running G1.  Presto is tuned for it. 
+* Run Java 10 or later.  In Java 10 the full GC of G1 runs in parallel which makes the pause much shorter. 
+* Use ORC file format.  ORC has a bunch of adaptive features to reduce the size of allocations for complex data types.  These features are not present in the Parquet code yet. 
+
+
+If that doesn’t fix things, you’ll have to dig into the specific queries causing the problem to determine what is special about them.  Typically it is a bad function, super wide tables, or really big nested data.  Alternatively, you can tweak the timeouts, but that is really just another form throwing hardware at the problem (and adding more nodes is an easier approach). 
+
+
+Big queries and GCs should be unrelated.  Seeing full GCs is almost always a sign of bad code, not query size.  Really large queries can have different impacts depending on what specific resource is large for the query.  For example, large input data that in an network inefficient format like uncompressed text, while stature the networks, where as queries using lots of concurrent memory can result in starvation of other queries.  For these situations, Presto has adaptive and safety features to avoid issues, but this is normally unrelated to full GCs. 
+
+
+
+(1) Impala的执行跟presto是相似的，但是Impala的执行层是c++实现，自己控制内存。presto是java实现，依赖java的gc。
+(2) HBase实现了自己的内存管理，并且内存复用后解决了gc问题，presto可能也需要实现相同的逻辑。
+
+
+
+
+
+
+
+
+

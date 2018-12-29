@@ -1,0 +1,10 @@
+
+//修改
+mvn versions:set -DnewVersion=
+
+//提交
+mvn versions:commit
+//回退
+mvn versions:revert
+
+
