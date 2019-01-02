@@ -1,3 +1,9 @@
+
+git cherry-pick be54e88b
+
+
+
+
 假设本地分支名是branch-1.1.2，按照下面步骤：
 1. git checkout -b branch-1.1.2-EHB-408 branch-1.1.2
 2. git push -u origin branch-1.1.2-EHB-408:branch-1.1.2-EHB-408
@@ -48,5 +54,17 @@ $ git checkout optimize-create-inverted-indexes
 $ git push binlijin-druid
 
 $ git pull origin master
+
+
+
+git remote add facebook https://github.com/prestodb/presto
+git remote -v
+git fetch facebook
+git tag -l
+git checkout tags/0.215 -b 0.215
+git checkout -b branch-0.215
+git push --set-upstream origin branch-0.215
+
+
 
 
