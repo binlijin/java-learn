@@ -1,0 +1,174 @@
+
+https://docs.snowflake.net/manuals/sql-reference/constructs/group-by-grouping-sets.html
+http://www.sqlservertutorial.net/sql-server-basics/sql-server-grouping-sets/
+
+
+create table nurses (
+   id integer,
+   full_name varchar,
+   medical_license varchar,   
+   radio_license varchar    
+   )
+   ;
+
+
+
+ insert into nurses
+     (id, full_name, medical_license, radio_license)
+   values
+     (201, 'Thomas Leonard Vicente', 'LVN', 'Technician'),
+     (202, 'Tamara Lolita VanZant', 'LVN', 'Technician'),
+     (341, 'Georgeann Linda Vente', 'LVN', 'General'),
+     (471, 'Andrea Renee Nouveau', 'RN', 'Amateur Extra')
+     ;
+
+
+
+presto:default> select * from nurses;
+ id  |       full_name        | medical_license | radio_license 
+-----+------------------------+-----------------+---------------
+ 201 | Thomas Leonard Vicente | LVN             | Technician    
+ 202 | Tamara Lolita VanZant  | LVN             | Technician    
+ 341 | Georgeann Linda Vente  | LVN             | General       
+ 471 | Andrea Renee Nouveau   | RN              | Amateur Extra 
+(4 rows)
+
+
+
+
+presto:default> select count(*), medical_license, radio_license
+             ->   from nurses
+             ->   group by grouping sets (medical_license, radio_license);
+ _col0 | medical_license | radio_license 
+-------+-----------------+---------------
+     1 | NULL            | Amateur Extra 
+     3 | LVN             | NULL          
+     2 | NULL            | Technician    
+     1 | NULL            | General       
+     1 | RN              | NULL          
+(5 rows)
+
+
+
+
+presto:default> SELECT count(*), medical_license  from nurses group by  medical_license;
+ _col0 | medical_license 
+-------+-----------------
+     3 | LVN             
+     1 | RN              
+(2 rows)
+
+
+
+
+presto:default> SELECT count(*), radio_license from nurses group by radio_license;
+ _col0 | radio_license 
+-------+---------------
+     2 | Technician    
+     1 | Amateur Extra 
+     1 | General       
+(3 rows)
+
+
+
+
+presto:default> SELECT count(*), NULL,radio_license from nurses group by radio_license UNION ALL SELECT count(*), medical_license,NULL from nurses group by medical_license;
+ _col0 | _col1 | radio_license 
+-------+-------+---------------
+     1 | NULL  | General       
+     1 | RN    | NULL          
+     2 | NULL  | Technician    
+     1 | NULL  | Amateur Extra 
+     3 | LVN   | NULL          
+(5 rows)
+
+
+
+
+presto:default> SELECT count(*), medical_license, radio_license from nurses group by medical_license, radio_license;
+ _col0 | medical_license | radio_license 
+-------+-----------------+---------------
+     2 | LVN             | Technician    
+     1 | LVN             | General       
+     1 | RN              | Amateur Extra 
+
+
+
+
+presto:default> select count(*), medical_license, radio_license from nurses group by grouping sets ((medical_license, radio_license),(medical_license),(radio_license),()) ORDER BY medical_license, radio_license;
+ _col0 | medical_license | radio_license 
+-------+-----------------+---------------
+     1 | LVN             | General       
+     2 | LVN             | Technician    
+     3 | LVN             | NULL          
+     1 | RN              | Amateur Extra 
+     1 | RN              | NULL          
+     1 | NULL            | Amateur Extra 
+     1 | NULL            | General       
+     2 | NULL            | Technician    
+     4 | NULL            | NULL          
+(9 rows)
+
+
+
+
+
+presto:default> SELECT count(*), medical_license, radio_license from nurses group by medical_license, radio_license UNION ALL SELECT count(*), NULL,radio_license from nurses group by radio_license UNION ALL SELECT count(*), medical_license,NULL from nurses group by medical_license UNION ALL SELECT count(*), NULL, NULL from nurses ORDER BY medical_license, radio_license;
+ _col0 | medical_license | radio_license 
+-------+-----------------+---------------
+     1 | LVN             | General       
+     2 | LVN             | Technician    
+     3 | LVN             | NULL          
+     1 | RN              | Amateur Extra 
+     1 | RN              | NULL          
+     1 | NULL            | Amateur Extra 
+     1 | NULL            | General       
+     2 | NULL            | Technician    
+     4 | NULL            | NULL          
+(9 rows)
+
+
+
+
+
+presto:default> select GROUPING(medical_license) grouping_medical_license, GROUPING(radio_license) grouping_radio_license, count(*), medical_license, radio_license from nurses group by grouping sets ((medical_license, radio_license),(medical_license),(radio_license),()) ORDER BY medical_license, radio_license;
+ grouping_medical_license | grouping_radio_license | _col2 | medical_license | radio_license 
+--------------------------+------------------------+-------+-----------------+---------------
+                        0 |                      0 |     1 | LVN             | General       
+                        0 |                      0 |     2 | LVN             | Technician    
+                        0 |                      1 |     3 | LVN             | NULL          
+                        0 |                      0 |     1 | RN              | Amateur Extra 
+                        0 |                      1 |     1 | RN              | NULL          
+                        1 |                      0 |     1 | NULL            | Amateur Extra 
+                        1 |                      0 |     1 | NULL            | General       
+                        1 |                      0 |     2 | NULL            | Technician    
+                        1 |                      1 |     4 | NULL            | NULL          
+(9 rows)
+
+
+
+
+presto:default> select grouping(medical_license, radio_license) ,medical_license, radio_license from nurses group by grouping sets ((medical_license, radio_license),(medical_license),(radio_license),());
+ _col0 | medical_license | radio_license 
+-------+-----------------+---------------
+     0 | LVN             | Technician    
+     3 | NULL            | NULL          
+     2 | NULL            | General       
+     1 | RN              | NULL          
+     1 | LVN             | NULL          
+     2 | NULL            | Technician    
+     0 | LVN             | General       
+     0 | RN              | Amateur Extra 
+     2 | NULL            | Amateur Extra 
+(9 rows)
+
+
+
+
+
+
+
+
+
+
+

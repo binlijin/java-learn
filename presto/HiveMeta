@@ -1,0 +1,13 @@
+(1) 接口ConnectorMetadata 
+HiveMetadata，InformationSchemaMetadata，CassandraMetadata
+
+
+hive实现
+
+HiveMetadata -> SemiTransactionalHiveMetastore -> CachingHiveMetastore -> BridgingHiveMetastore -> ThriftHiveMetastore -> HiveCluster
+
+
+HiveCluster (StaticHiveCluster) -> HiveMetastoreClient (ThriftHiveMetastoreClient)
+
+
+

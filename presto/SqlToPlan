@@ -1,0 +1,22 @@
+String Sql -> Plan
+
+(1) Sql String -> Statement
+  SqlParser完成，Antlr4
+
+(2) Statement -> Analysis
+  Analyzer完成
+  StatementRewrite
+  StatementAnalyzer
+
+(3) Analysis -> Plan 逻辑执行计划
+  LogicalPlanner
+  
+(5) Plan -> SubPlan (Fragment the plan)
+  PlanFragmenter (Splits a logical plan into fragments that can be shipped and executed on distributed nodes)
+
+(6) PlanRoot -> StageExecutionPlan
+DistributedExecutionPlanner
+
+(7) Scheduler
+
+

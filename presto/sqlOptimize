@@ -1,0 +1,72 @@
+
+(1) https://github.com/prestodb/presto/issues/12024
+https://docs.snowflake.net/manuals/sql-reference/constructs/group-by-grouping-sets.html
+
+
+SELECT COUNT(DISTINCT ss_item_sk), COUNT(DISTINCT ss_store_sk)
+FROM tpcds_bin_partitioned_orc_1000.store_sales;
+
+
+SELECT COUNT(CASE
+		WHEN grouping_id = 1
+		AND ss_item_sk IS NOT NULL THEN 1
+		ELSE NULL
+	END) AS c0, COUNT(CASE
+		WHEN grouping_id = 2
+		AND ss_store_sk IS NOT NULL THEN 1
+		ELSE NULL
+	END) AS c1
+FROM (
+	SELECT grouping(ss_item_sk, ss_store_sk) AS grouping_id, ss_item_sk, ss_store_sk
+	FROM tpcds_bin_partitioned_orc_1000.store_sales
+	GROUP BY GROUPING SETS (ss_item_sk, ss_store_sk)
+
+
+
+
+(2)
+
+
+SELECT day, COUNT(DISTINCT pid), COUNT(DISTINCT city_id)
+	, COUNT(DISTINCT pc), COUNT(DISTINCT county)
+FROM table_p_o_day_mid
+WHERE month = '10'
+	AND day <= '07'
+GROUP BY day;
+
+
+SELECT t1.day, t1.c1, t2.c1, t3.c1, t4.c1
+FROM (
+	SELECT DAY, COUNT(DISTINCT pid) AS c1
+	FROM table_p_o_day_mid
+	WHERE MONTH = '10'
+		AND DAY <= '07'
+	GROUP BY DAY
+) t1
+	JOIN (
+		SELECT DAY, COUNT(DISTINCT city_id) AS c1
+		FROM table_p_o_day_mid
+		WHERE MONTH = '10'
+			AND DAY <= '07'
+		GROUP BY DAY
+	) t2
+	ON t1.day = t2.day
+	JOIN (
+		SELECT DAY, COUNT(DISTINCT pc) AS c1
+		FROM table_p_o_day_mid
+		WHERE MONTH = '10'
+			AND DAY <= '07'
+		GROUP BY DAY
+	) t3
+	ON t1.day = t3.day
+	JOIN (
+		SELECT DAY, COUNT(DISTINCT county) AS c1
+		FROM table_p_o_day_mid
+		WHERE MONTH = '10'
+			AND DAY <= '07'
+		GROUP BY DAY
+	) t4
+	ON t1.day = t4.day
+
+
+
