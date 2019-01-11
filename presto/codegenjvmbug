@@ -1,0 +1,124 @@
+
+https://github.com/prestodb/presto/pull/9189
+
+We have observed old cached function might trigger some JVM bug in
+production, such as repeatedly compiling MethodHandle that causes
+full GC. Forcing evicting all cached function solves the issue.
+
+
+sun.management
+
+
+http://mail.openjdk.java.net/pipermail/hotspot-dev/2017-October/028504.html
+
+As a workaround, you can try to disable LF customization 
+(java.lang.invoke.MethodHandle.CUSTOMIZE_THRESHOLD=-1).
+
+
+
+https://github.com/prestodb/presto/pull/9233
+
+https://github.com/prestodb/presto/pull/10687
+
+
+
+PageFunctionCompiler
+FunctionRegistry
+
+
+https://groups.google.com/forum/#!topic/presto-users/xl2LxMBPFA0
+
+http://mail.openjdk.java.net/pipermail/hotspot-dev/2016-June/023316.html
+
+
+
+http://mail.openjdk.java.net/pipermail/hotspot-dev/2016-June/023317.html
+
+
+Implementing Lambda with Capture support makes Metaspace fills LambdaForms$BMH class
+
+http://mail.openjdk.java.net/pipermail/mlvm-dev/2017-May/006752.html
+
+We are implementing Lambda function with capture support in a SQL Engine.
+We currently implement by compiling user-written Lambda Expression into a
+MethodHandle. And use bindTo to captured fields. Thus for each row we will
+have a Bound Method Handle.
+
+However, we found JVM will generate the byte code Bound Method Handle once
+it's invoked more than 128 times. This cause in some cases (when the table
+has large arrays), the Metaspace fills with generated LambdaForm$BMH class.
+
+Here is the simple code to reproduce the issue:
+https://github.com/wenleix/BMHTest . It looks we cannot increase
+java.lang.invoke.MethodHandle.CUSTOMIZE_THRESHOLD beyond 128. Any
+suggestions to implement Lambda with Capture Support on JVM?
+
+http://mail.openjdk.java.net/pipermail/mlvm-dev/2017-May/006755.html
+   -Djava.lang.invoke.MethodHandle.CUSTOMIZE_THRESHOLD=-1
+
+
+Deoptimization taking up most CPU cycles
+http://mail.openjdk.java.net/pipermail/hotspot-dev/2016-June/023317.html
+http://mail.openjdk.java.net/pipermail/hotspot-dev/2016-June/023319.html
+
+
+fyi A very similar problem was reported on hotspot-compiler-dev this week:
+http://mail.openjdk.java.net/pipermail/hotspot-compiler-dev/2016-June/023278.html
+
+In response to that thread I've just pushed some code in JITWatch for
+visualising sweeps and the point at which compilation gets disabled [1].
+Hope that's useful.
+
+[1] https://github.com/AdoptOpenJDK/jitwatch
+
+
+
+
+
+Java 8 Performance Issue With Tiered Compilation Disabled
+http://mail.openjdk.java.net/pipermail/hotspot-compiler-dev/2016-June/023278.html
+
+
+
+
+
+
+
+Flink 使用 janino 进行codegen
+https://janino-compiler.github.io/janino/
+
+flink-libraries/flink-table/src/main/scala/org/apache/flink/table/codegen/Compiler.scala
+
+package org.apache.flink.table.codegen
+
+import org.apache.flink.api.common.InvalidProgramException
+import org.codehaus.commons.compiler.CompileException
+import org.codehaus.janino.SimpleCompiler
+
+trait Compiler[T] {
+
+  @throws(classOf[CompileException])
+  def compile(cl: ClassLoader, name: String, code: String): Class[T] = {
+    require(cl != null, "Classloader must not be null.")
+    val compiler = new SimpleCompiler()
+    compiler.setParentClassLoader(cl)
+    try {
+      compiler.cook(code)
+    } catch {
+      case t: Throwable =>
+        throw new InvalidProgramException("Table program cannot be compiled. " +
+          "This is a bug. Please file an issue.", t)
+    }
+    compiler.getClassLoader.loadClass(name).asInstanceOf[Class[T]]
+  }
+}
+
+
+
+
+
+
+
+
+
+

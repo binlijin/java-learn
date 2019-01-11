@@ -1,0 +1,18 @@
+
+Java HotSpot(TM) 64-Bit Server VM warning: UseCMSCompactAtFullCollection is deprecated and will likely be removed in a future release.
+WARNING: Current garbage collectors are [ParNew, ConcurrentMarkSweep]. Presto recommends the G1 garbage collector.
+2018-12-12T13:47:47.278+0800    INFO    main    io.airlift.log.Logging  Logging to stderr
+2018-12-12T13:47:47.281+0800    INFO    main    Bootstrap       Loading configuration
+2018-12-12T13:47:47.401+0800    INFO    main    Bootstrap       Initializing logging
+2018-12-12T13:47:47.449+0800    INFO    main    io.airlift.log.Logging  Logging to /home/presto/cluster-data/var/log/server.log
+2018-12-12T13:47:47.530+0800    INFO    main    io.airlift.log.Logging  Disabling stderr output
+Java HotSpot(TM) 64-Bit Server VM warning: CodeCache is full. Compiler has been disabled.
+Java HotSpot(TM) 64-Bit Server VM warning: Try increasing the code cache size using -XX:ReservedCodeCacheSize=
+CodeCache: size=245760Kb used=236619Kb max_used=237552Kb free=9140Kb
+ bounds [0x00007f645458f000, 0x00007f646358f000, 0x00007f646358f000]
+ total_blobs=42328 nmethods=41391 adapters=844
+ compilation: disabled (not enough contiguous free space left)
+
+
+
+

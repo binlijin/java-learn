@@ -1,0 +1,48 @@
+
+
+命令：jcmd PID help
+https://www.jianshu.com/p/388e35d8a09b
+
+
+jcmd
+
+http://mail.openjdk.java.net/pipermail/hotspot-dev/2017-October/028505.html
+./java-current/bin/jcmd 35145 PerfCounter.print
+
+
+
+
+查看虚拟机启动时间VM.uptime
+
+./java-current/bin/jcmd 35145 VM.uptime
+
+
+打印线程栈信息Thread.print
+
+./java-current/bin/jcmd 35145 Thread.print
+
+
+查看系统中类统计信息GC.class_histogram
+
+./java-current/bin/jcmd 35145 GC.class_histogram
+
+
+
+
+导出堆信息GC.heap_dump
+使用如下命令可以导出当前堆栈信息，这个命令功能和 jmap -dump
+功能一样
+
+
+获取系统Properties内容VM.system_properties
+
+
+获取启动参数VM.flags
+
+
+获取所有性能相关数据PerfCounter.print
+
+https://blog.csdn.net/WinWill2012/article/details/46364849
+
+
+
