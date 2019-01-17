@@ -1,0 +1,26 @@
+海量数据实时分析
+
+https://mp.weixin.qq.com/s/kt-xtvM77UZ3kD-3dpU7sw
+万字长文揭秘：阿里如何实现海量数据实时分析？
+AnalyticDB
+
+
+https://zhuanlan.zhihu.com/p/29482721
+
+(1) AnalyticDB
+读写分离
+
+(2) presto + druid
+读写分离
+
+(3) impala + kudu
+读写不分离
+
+(4) ClickHouse vs Palo
+  实时导入和交互式查询
+
+(5) Hudi
+    https://eng.uber.com/uber-big-data-platform/
+
+
+
