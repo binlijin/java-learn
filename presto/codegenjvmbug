@@ -1,4 +1,46 @@
 
+https://mail.openjdk.java.net/pipermail/hotspot-dev/
+
+
+
+有两个问题：
+
+There are two separate problems:
+
+- The deoptimization problem as original post describes.
+- The MethodHandle compilation issue described in http://mail.openjdk.java.net/pipermail/hotspot-dev/2017-October/028517.html
+
+These two issues are different, although they look similar. 
+
+For the second issue, we confirmed forcing expiring the problematic MethodHandle solve the problem in JDK 8. Thus it is mitigated by  since Presto 0.188. We no longer observe the issue after JDK 9.
+
+
+
+(1) The deoptimization problem as original post describes.
+http://mail.openjdk.java.net/pipermail/hotspot-dev/2016-June/023316.html
+
+
+(2) The MethodHandle compilation issue described in http://mail.openjdk.java.net/pipermail/hotspot-dev/2017-October/028517.html
+
+Expire cached specialized function after 1 hour
+https://github.com/prestodb/presto/pull/9189  （FunctionRegistry.java） 这个没有回滚。
+
+
+
+Expire projection and filter cache entries after one hour（PageFunctionCompiler） 这个被10687给回滚了。
+https://github.com/prestodb/presto/pull/9233
+
+Remove time-based expiration of page function bytecode （PageFunctionCompiler）
+https://github.com/prestodb/presto/pull/10687
+
+
+
+
+
+
+
+
+
 https://github.com/prestodb/presto/pull/9189
 
 We have observed old cached function might trigger some JVM bug in
