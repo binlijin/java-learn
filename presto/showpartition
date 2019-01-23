@@ -1,0 +1,16 @@
+
+Remove support for SHOW PARTITIONS statement #10524
+https://github.com/prestodb/presto/pull/10524
+
+
+Completely remove SHOW PARTITIONS #10525
+https://github.com/prestodb/presto/pull/10525
+
+
+
+show partitions from pcs_t1;  与  SELECT * FROM "pcs_t1$partitions"; 是等同的。
+
+ShowQueriesRewrite.java 做的操作其实也是把 show partitions from pcs_t1; 替换成 SELECT * FROM "pcs_t1$partitions"; 。
+
+
+
