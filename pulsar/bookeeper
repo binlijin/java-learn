@@ -6,3 +6,21 @@ https://cloud.tencent.com/developer/news/339495
 
 
 
+https://streaml.io/blog/intro-to-bookkeeper
+
+https://streaml.io/blog/why-apache-bookkeeper
+
+https://streaml.io/blog/why-bookkeeper-part-2
+
+
+Apache BookKeeper uses a quorum-vote parallel replication algorithm for replicating data to ensure predictable low latency.
+
+
+https://bookkeeper.apache.org/distributedlog/technical-review/2016/09/19/kafka-vs-distributedlog.html
+
+
+http://bookkeeper.apache.org/docs/latest/getting-started/concepts/#bookies
+
+
+
+
