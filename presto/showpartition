@@ -12,5 +12,6 @@ show partitions from pcs_t1;  与  SELECT * FROM "pcs_t1$partitions"; 是等同�
 
 ShowQueriesRewrite.java 做的操作其实也是把 show partitions from pcs_t1; 替换成 SELECT * FROM "pcs_t1$partitions"; 。
 
+https://prestosql.io/docs/current/connector/hive.html#examples
 
 
