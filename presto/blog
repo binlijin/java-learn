@@ -48,3 +48,36 @@ https://blog.csdn.net/xinjianwuhen1991/article/details/81429825
 
 
 
+
+https://www.facebook.com/notes/facebook-engineering/presto-interacting-with-petabytes-of-data-at-facebook/10151786197628920/
+
+https://code.fb.com/core-data/even-faster-data-at-the-speed-of-presto-orc/
+
+https://www.lewuathe.com/presto-driver,split-and-pipeline.html
+
+
+http://labs.gree.jp/blog/2014/12/12838/
+
+美团
+https://github.com/MTDATA/presto/commits/mt-0.60
+
+
+京东
+https://github.com/CHINA-JD/presto
+
+
+auto type conversion
+https://github.com/MTDATA/presto/commit/77e4c5d0b7ef95292557a5d18fe1840430fcd594
+
+
+添加varchar到bigint和double的隐式转换
+https://github.com/CHINA-JD/presto/commit/0cf7e343a7c23a8762f84252d5cbe3e2ab6312f5
+
+
+
+
+
+
+
+
+
