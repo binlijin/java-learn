@@ -1,0 +1,15 @@
+BookKeeper for write-ahead logging
+https://issues.apache.org/jira/browse/HBASE-2315
+
+Bring quorum based write ahead log into HBase
+https://issues.apache.org/jira/browse/HBASE-12259
+
+
+https://home.apache.org/~elserj/Effective%20HBase%20in%20the%20Cloud.pdf
+This document outlines a proposal to remove HBase’s dependency on HDFS by replacing the current Write-Ahead-Log (WAL) implementation using Apache Ratis (incubating)
+
+Ratis LogService backed WALs    
+https://issues.apache.org/jira/browse/HBASE-20951
+
+
+
