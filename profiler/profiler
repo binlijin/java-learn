@@ -1,0 +1,13 @@
+https://github.com/jvm-profiling-tools/async-profiler
+
+
+Add profiler endpoint to HS2 and LLAP
+https://issues.apache.org/jira/browse/HIVE-20202
+
+Add java profiler servlet to the Ozone web servers
+https://issues.apache.org/jira/browse/HDDS-1116
+
+Add async profiler to the hadoop-runner base container image
+https://issues.apache.org/jira/browse/HDDS-1117
+
+
