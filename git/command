@@ -91,4 +91,17 @@ git push origin HEAD:branch-2.1
 
 
 
+http://memoryboxes.github.io/blog/2014/12/07/duo-ge-gitzhang-hao-zhi-jian-de-qie-huan/
+git config --list
+
+git config --global user.name "Your Name"
+git config --global user.email you@example.com
+全局的通过vim ~/.gitconfig来查看
+
+git config user.name "Your Name"
+git config user.email you@example.com
+局部的通过当前路径下的 .git/config文件来查看
+
+
+
 
