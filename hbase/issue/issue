@@ -1,4 +1,23 @@
 
+
+特性
+
+Synchronous Replication
+Synchronous replication for HBase
+https://issues.apache.org/jira/browse/HBASE-19064
+
+
+HBase read high-availability using timeline-consistent region replicas
+https://issues.apache.org/jira/browse/HBASE-10070
+
+Timeline Consistent region replicas - Phase 2 design
+https://issues.apache.org/jira/browse/HBASE-11183
+
+
+
+
+
+
 Pass blocks of KVs from HFile scanner to the StoreFileScanner and up
 https://issues.apache.org/jira/browse/HBASE-9440
 

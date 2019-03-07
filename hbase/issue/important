@@ -1,0 +1,27 @@
+
+
+特性
+
+(1) Synchronous Replication
+Synchronous replication for HBase
+https://issues.apache.org/jira/browse/HBASE-19064
+
+
+(2) HBase read high-availability using timeline-consistent region replicas
+https://issues.apache.org/jira/browse/HBASE-10070
+
+Timeline Consistent region replicas - Phase 2 design
+https://issues.apache.org/jira/browse/HBASE-11183
+
+
+(3) CCSMap
+https://issues.apache.org/jira/browse/HBASE-20312
+https://yq.aliyun.com/articles/277268
+
+
+(4) RegionServer Grouping
+
+
+
+
+
