@@ -1,0 +1,51 @@
+
+2.2.0 rc
+
+
+(1) TransitRegionStateProcedure
+
+
+
+
+(2) ReopenTableRegionsProcedure
+
+ 第一步 获取table的regions，这里做了优化，State除了OPEN/OPENING之外的region不需要重新reopen了。
+ 第二步 相关的regions执行 reopen TransitRegionStateProcedure
+ 第三步 检查未reopen的regions，重新schedule
+       
+  https://issues.apache.org/jira/browse/HBASE-20817  region open的时候 openSeqNum + 1
+  https://issues.apache.org/jira/browse/HBASE-20752
+
+
+
+（3） ServerCrashProcedure
+
+
+
+（4） CreateTableProcedure
+
+
+
+
+
+
+
+(1) 启动的时候
+(2) Client 通过Admin接口操作
+(3) RegionServer crash
+(4) RegionServer report regions
+(5) balancer
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+

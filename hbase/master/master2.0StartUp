@@ -1,0 +1,39 @@
+2.0 HMaster初始化过程：
+
+（1）初始化ProcedureExecutor
+   recoverLease
+   loadProcedures
+   Procedure worker未启动
+
+（2）检查未执行完的Procedure的类型 （Procedure worker还未启动）
+
+（3）创建Assignment Manager
+    从zk上获取meta的状态
+
+（4）RegionServerTracker.start
+   deadServersFromPE the region servers which already have SCP associated.
+   liveServersFromWALDir the live region servers from wal directory.
+   splittingServersFromWALDir Servers whose WALs are being actively 'split'.
+   说明：splittingServersFromWALDir中对应的每一个server在deadServersFromPE中应该都有一个。（Each splitting server should have a corresponding SCP. Log if not.）
+   读zk，所有活着的server加入onlineServers列表，在liveServersFromWALDir里面，没有在onlineServers列表中的做expireServer操作。
+
+（5）获取meta表的RegionState，如果meta是offline状态会schedule一个InitMetaProcedure。
+
+（6）start up all service threads.
+    包括启动Procedure worker。
+
+（7）wait meta to be initialized after we start procedure executor
+
+（8）
+
+（9）
+
+（10）
+
+
+
+
+
+
+
+
