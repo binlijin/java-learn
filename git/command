@@ -1,4 +1,6 @@
 
+git commit --amend
+
 git cherry-pick be54e88b
 
 

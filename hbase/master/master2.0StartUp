@@ -24,11 +24,32 @@
 
 （7）wait meta to be initialized after we start procedure executor
 
-（8）
+（8）Wait for region servers to report in.
 
-（9）
+（9）waitForMetaOnline
 
-（10）
+（10）assignmentManager.joinCluster
+    Scan hbase:meta to build list of existing regions, servers, and assignment.
+    processOfflineRegions, 主要是把offline的region assign出去
+
+（11）
+
+
+（12）
+
+
+（13）
+
+
+
+
+
+ServerCrashProcedure 执行中会等待meta是否assign。
+
+
+
+
+
 
 
 
