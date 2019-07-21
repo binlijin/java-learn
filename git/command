@@ -1,6 +1,8 @@
 
 git commit --amend
 
+GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)"
+
 git cherry-pick be54e88b
 
 

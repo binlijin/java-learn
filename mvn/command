@@ -1,0 +1,14 @@
+
+ mvn dependency:tree
+
+
+https://markhneedham.com/blog/2013/09/14/jackson-core-asl-java-lang-abstractmethoderror-org-codehaus-jackson-jsonnode-getvalueastextljavalangstring/
+
+
+
+mvn dependency:tree -Ddetail=true
+
+
+
+
+

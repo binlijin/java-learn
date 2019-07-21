@@ -1,0 +1,12 @@
+
+目前 HBase 可以支持的压缩方式有 GZ（GZIP）、LZO、LZ4 以及 Snappy。它们之间的区别如下：
+
+GZ：用于冷数据压缩，与 Snappy 和 LZO 相比，GZIP 的压缩率更高，但是更消耗 CPU，解压/压缩速度更慢。
+Snappy 和 LZO：用于热数据压缩，占用 CPU 少，解压/压缩速度比 GZ 快，但是压缩率不如 GZ 高。
+Snappy 与 LZO 相比，Snappy 整体性能优于 LZO，Snappy 压缩率比 LZO 更低，但是解压/压缩速度更快。
+LZ4 与 LZO 相比，LZ4 的压缩率和 LZO 的压缩率相差不多，但是LZ4的解压/压缩速度更快。
+
+
+create 'iteblog',{NAME=>'f1'}, {NAME=>'f2',COMPRESSION=>'Snappy'}
+
+
