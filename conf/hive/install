@@ -1,0 +1,57 @@
+
+安装mysql ( mysql-5.7.27-macos10.14-x86_64.dmg)
+
+安装后会生成一个root密码
+需要启动mysql
+
+
+2019-09-17T12:27:42.250007Z 1 [Note] A temporary password is generated for root@localhost: zcHurJ.N,9&d
+
+修改密码：
+/usr/local/mysql/bin/mysqladmin  -u root -p password
+
+
+https://www.jianshu.com/p/71f81a0c62b2
+
+
+下载 mysql-connector-java-5.1.48.tar.gz
+
+cp mysql-connector-java-5.1.48.jar hive-1.1.0-cdh5.7.6/lib
+
+
+$ mysql -u root -p
+
+
+mysql>  create database hive;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> create user 'hive'@'localhost' identified by '123456';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql>  grant all privileges on hive.* to 'hive'@'localhost' with grant option;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.00 sec)
+
+
+
+$ nohup ./hive --service metastore > metastore.log 2>&1 &
+
+
+$ ./hive
+
+hive> show tables;
+OK
+Time taken: 1.057 seconds
+hive>  create table test (mykey string,myval string);
+OK
+Time taken: 0.574 seconds
+hive> insert into test values("1","www.ymq.io");
+
+hive> select * from test;
+OK
+1	www.ymq.io
+Time taken: 0.183 seconds, Fetched: 1 row(s)
+
+
