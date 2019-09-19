@@ -81,6 +81,13 @@ git branch -v -a
 git checkout rel/2.1.3 -b v2.1.3
 git push --set-upstream origin v2.1.3
 
+git remote remove apache
+
+1.获取远程所有标签. (可选推荐)
+git fetch
+
+2.删除所有本地标签.
+git tag -d $(git tag -l)
 
 
 

@@ -34,3 +34,18 @@ Memory Management
 https://issues.apache.org/jira/browse/HBASE-15555
 
 
+
+JIT deoptimizatoin for unstable_if
+https://groups.google.com/forum/#!topic/presto-users/RCVd_UVMW5I
+
+
+JIT deoptimization in Cell.write
+https://issues.apache.org/jira/browse/HBASE-22134
+
+
+
+
+
+
+
+
