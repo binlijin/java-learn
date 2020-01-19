@@ -1,0 +1,14 @@
+
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.cm "commit -m"
+git config --global alias.amend "commit --amend -m"
+git config --global alias.cp cherry-pick
+git config --global alias.au "add -u"
+git config --global alias.st status
+git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %C(bold blue)%s%Creset %Cgreen(%cr) <%an>%Creset' --abbrev-commit --date=relative"
+git config --global alias.lo 'log --oneline --decorate'
+git config --global alias.last "log -1"
+
+

@@ -9,6 +9,9 @@ https://markhneedham.com/blog/2013/09/14/jackson-core-asl-java-lang-abstractmeth
 mvn dependency:tree -Ddetail=true
 
 
+checkstyle:checkstyle
 
+
+ mvn clean package -DskipTests  -Drat.skip=true -Prelease assembly:single 
 
 

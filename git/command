@@ -90,6 +90,9 @@ git fetch
 git tag -d $(git tag -l)
 
 
+$ git tag -d v0.1.2
+
+
 
 https://issues.apache.org/jira/browse/HBASE-21698
 
