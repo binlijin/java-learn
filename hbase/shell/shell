@@ -10,4 +10,16 @@ bin/hbase hfile -m -f file:///home/hadoop/b94d0c853814ccc319007a868c76fb21/cf/81
 bin/hbase hfile -p  -w 0191:b2b-2144112546 -f file:///home/hadoop/b94d0c853814ccc319007a868c76fb21/cf/81bf0460ed10471c8062ad04fe6e23ad 
 
 
+$ ./hbase shell ./sample_commands.txt
+
+https://archive.cloudera.com/cdh5/cdh/5/hbase-0.98.6-cdh5.2.0/book/ch04s04.html
+
+
+$ echo "describe 'test1'" | ./hbase shell -n
+
+http://hbase.apache.org/book.html#shell
+
+
+
+
 

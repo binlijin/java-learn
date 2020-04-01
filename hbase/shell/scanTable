@@ -1,0 +1,2 @@
+scan 'ycsb_result';
+exit
