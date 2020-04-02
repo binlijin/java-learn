@@ -9,15 +9,17 @@ http://www.bitstech.net/category/hbase/page/2/
 HBase的Write Ahead Log (WAL) —— 整体架构、线程模型
 http://www.cnblogs.com/ohuang/p/5807543.html
 
-
 https://www.slidestalk.com/home/publish/74
-
-
 
 https://mapr.com/blog/in-depth-look-hbase-architecture/
 
-
 http://blog.zahoor.in/2012/08/hbase-hmaster-architecture/
+
+
+https://www.slideshare.net/MichaelStack4/hbaseconasia2018-track11-use-ccsmap-to-improve-hbase-ygc-time
+
+https://www.slideshare.net/HBaseCon/lift-the-ceiling-of-hbase-throughputs
+
 
 
 
