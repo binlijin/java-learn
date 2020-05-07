@@ -160,7 +160,15 @@ trait Compiler[T] {
 
 
 
+修改JVM参数：
 
+-XX:PerMethodRecompilationCutoff 
+-XX:PerBytecodeRecompilationCutoff
+
+这2个值尽量调大一些，比如2000和500以上。
+
+
+http://armsword.com/2019/09/18/solve-presto-system-load-too-high/
 
 
 
