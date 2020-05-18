@@ -5,7 +5,6 @@
 
 <configuration> 
 
-<!--    
 <property> 
   <name>hive.metastore.local</name> 
   <value>true</value> 
@@ -15,13 +14,12 @@
   <name>hive.metastore.uris</name>
   <value>thrift://127.0.0.1:9083</value>
 </property>
--->
 
 <property> 
   <name>javax.jdo.option.ConnectionURL</name> 
-  <value>jdbc:mysql://localhost:3306/hive?createDatabaseIfNotExist=true&amp;useSSL=false</value> 
+  <value>jdbc:mysql://localhost:3306/hive?createDatabaseIfNotExist=true</value> 
   <description>JDBC connect string FOR a JDBC metastore</description> 
-</property>
+</property> 
 
 <property> 
   <name>javax.jdo.option.ConnectionDriverName</name> 
