@@ -7,4 +7,13 @@ Instagram is working on a project to significantly reduce Cassandra's tail laten
 We published a blog post about the wins and the benchmark metrics on AWS environment. https://engineering.instagram.com/open-sourcing-a-10x-reduction-in-apache-cassandra-tail-latency-d64f86b43589
 
 
+https://thenewstack.io/instagram-supercharges-cassandra-pluggable-rocksdb-storage-engine/
+
+https://instagram-engineering.com/open-sourcing-a-10x-reduction-in-apache-cassandra-tail-latency-d64f86b43589
+
+https://www.compose.com/articles/newsbits-rocksdb-and-instagram-gives-10x-boost-to-cassandra/
+
+https://issues.apache.org/jira/browse/CASSANDRA-13476
+
+
 
