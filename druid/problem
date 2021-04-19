@@ -1,0 +1,23 @@
+Lifecycle running shutdown hook
+https://www.druidforum.org/t/lifecycle-running-shutdown-hook/4677
+
+
+Druid services going down without any specific error
+https://www.druidforum.org/t/druid-services-going-down-without-any-specific-error/5646
+
+
+All the prosses in the cluster stopped suddenly.
+https://www.druidforum.org/t/all-the-prosses-in-the-cluster-stopped-suddenly/5134
+
+
+任务自动停止
+
+
+start-cluster-data-server 里面
+
+据说是 exec 的问题
+exec "$WHEREAMI/supervise" -c "$WHEREAMI/../conf/supervise/cluster/data.conf"
+exec 换成 nohup 就可以了
+nohup $WHEREAMI/supervise -c $WHEREAMI/../conf/supervise/cluster/data.conf &
+
+
