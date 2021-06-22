@@ -1,0 +1,108 @@
+如何查hbase集群问题
+
+1. 硬件问题
+  磁盘只读了
+
+  网络故障（交换机出了问题），丢包率高
+
+2. 存储使用率
+2.1.    存储空间用满了
+    oldwal
+
+    archive
+
+    snapshot
+
+    数据太多了
+
+   系统盘满了
+
+3. hbase
+3.1.  系统指标
+  磁盘IO Utils
+
+  网络带宽打满了
+
+
+
+3.2. 业务请求猛增
+
+
+3.3.  rs日志
+3.3.1. grep pause
+看是否有gc问题或者其他停顿
+
+
+
+一种是系统导致的停顿
+
+2021-07-02 15:40:29,975 WARN [master//100.115.140.40:60000] util.Sleeper: We slept 17155ms instead of 3000ms, this is likely due to a long garbage collecting pause and it's usually bad, see http://hbase.apache.org/book.html#trouble.rs.runtime.zkexpired
+2021-07-02 15:40:29,975 WARN [JvmPauseMonitor] util.JvmPauseMonitor: Detected pause in JVM or host machine (eg GC): pause of approximately 16156ms
+No GCs detected
+
+
+一种是java进程gc导致的停顿
+
+2021-07-01 13:17:45,166 WARN [regionserver/9.235.133.175:60020] util.Sleeper: We slept 15062ms instead of 3000ms, this is likely due to a long garbage collecting pause and it's usually bad, see http://hbase.apache.org/book.html#trouble.rs.runtime.zkexpired
+2021-07-01 13:17:45,167 INFO [regionserver/9.235.133.175:60020.Chore.3] hbase.ScheduledChore: Chore: MemstoreFlusherChore missed its start time
+2021-07-01 13:17:45,166 WARN [JvmPauseMonitor] util.JvmPauseMonitor: Detected pause in JVM or host machine (eg GC): pause of approximately 14586ms
+GC pool 'ConcurrentMarkSweep' had collection(s): count=1 time=14871ms
+
+
+需要重点看下full gc前后 heap的大小，数据是否能gc掉
+
+
+
+2021-07-01T13:17:30.413+0800: 3448.317: [CMS2021-07-01T13:17:30.486+0800: 3448.390: [CMS-concurrent-mark: 0.397/0.411 secs] [Times: user=5.59 sys=0.11, real=0.41 secs]
+(concurrent mode failure)CMS: Large block 0x00007fcf57fff570
+: 29360127K->29360125K(29360128K), 14.7503340 secs] 32505855K->32487494K(32505856K), [Metaspace: 58723K->58723K(262144K)]After GC:
+
+
+3.3.2. responseTooSlow
+
+
+2021-07-01 13:17:30,180 WARN [RpcServer.default.FPBQ.Fifo.handler=75,queue=15,port=60020] ipc.RpcServer: (responseTooSlow): {"call":"Multi(org.apache.hadoop.hbase.shaded.protobuf.generated.ClientProtos$MultiRequest)","multi.gets":3,"starttimems":"1625116629221","responsesize":"172","method":"Multi","param":"region\u003d item_base_feature_data,148,1610018186014.21c1f481797b01124e9c168dd24dfd54., for 3 action(s) and 1st row key\u003d148\\x00.\\x8E\\xC0$ \u003cTRUNCATED\u003e","processingtimems":20945,"client":"9.138.26.122:52058","queuetimems":58616,"multi.servicecalls":0,"class":"HRegionServer","multi.mutations":0}
+
+需要看下是处理确实耗时，还是 gc或者系统停顿导致
+
+3.3.3. Slow sync
+
+
+2021-05-31 17:49:01,603 INFO [AsyncFSWAL-0] wal.AbstractFSWAL: Slow sync cost: 103 ms, current pipeline: [DatanodeInfoWithStorage[9.235.133.175:9003,DS-608f34a6-c360-41d9-ac43-cecfea2a3bd0,DISK], DatanodeInfoWithStorage[9.235.132.252:9003,DS-055db1eb-4ede-4431-a943-bb6d6b015dc7,DISK], DatanodeInfoWithStorage[9.235.133.249:9003,DS-3cbbccad-51c2-44e1-b7cd-c09bbc4514e2,DISK]]
+
+需要看下是处理确实耗时，还是 gc或者系统停顿导致
+
+3.4. 热点问题
+热点key
+
+热点region
+
+table页面查看region请求和大小分布
+
+
+
+3.5.  jstack
+jstack 看瓶颈
+
+
+
+
+
+
+
+4. 保存现场
+4.1.   jstack
+   保存进程的jstack，最好连续jstack几次
+
+4.2.   heap dump
+   jmap -dump:format=b,file=jmap.bin 12752
+
+  如果有gc问题，需要dump下heap
+
+Profiler 用户指南
+
+4.3. 保存log
+master log，以免被冲刷掉
+
+
+

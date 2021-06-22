@@ -1,0 +1,4 @@
+hbase latency情况，总结的
+1. 若等待时间在1-10秒，首先排查网络／磁盘IO情况。目前99%类似情况由磁盘网络IO瓶颈导致
+⒉ 若等待时间>10秒，首先排查RS GC日志。目前99%类似情况由promotion failure/concurrent mode failure触发的full gc导致络／磁盘IO方面的瓶颈，在升级新硬件后可以解决；GC的影响属于java普遍痛点，后续会通过offheap方案逐步解决
+

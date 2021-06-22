@@ -1,0 +1,19 @@
+
+# Number of tasks per middleManager
+druid.worker.capacity=16
+ 
+# Task launch parameters
+druid.indexer.runner.javaOpts=-server -Xms3g -Xmx3g -XX:MaxDirectMemorySize=2g -Duser.timezone=UTC -Dfile.encoding=UTF-8 -XX:+ExitOnOutOfMemoryError -Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager -Dlog4j.configurationFile=conf/druid/cluster/_common/log4j2-task.xml
+druid.indexer.task.baseTaskDir=var/druid/task
+ 
+# HTTP server threads
+druid.server.http.numThreads=60
+ 
+# Processing threads and buffers on Peons
+druid.indexer.fork.property.druid.processing.numMergeBuffers=2
+druid.indexer.fork.property.druid.processing.buffer.sizeBytes=512000000
+druid.indexer.fork.property.druid.processing.numThreads=1
+
+
+
+

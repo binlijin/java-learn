@@ -1,0 +1,12 @@
+
+文件句柄数及vm.max_map_count的大小
+
+cat /proc/sys/vm/max_map_count
+sysctl -w vm.max_map_count=655300
+
+默认max_map_count是65530，建议调大到10倍。
+
+ulimit -a
+open files (-n) 65535 文件句柄数也建议调大，特别是segment多的时候需要很大。
+
+
