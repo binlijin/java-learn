@@ -1,0 +1,15 @@
+
+bin/graceful_stop.sh --restart --reload --maxthreads 10 100.94.1.3
+脚本先disable balancer
+
+把100.94.1.3上面的region move走
+
+重启rs
+
+把之前move走的region move回来
+
+恢复balance为之前的状态
+
+--maxthreads 10  设置并发为10
+
+
