@@ -1,0 +1,98 @@
+
+
+
+
+druid.javascript.enabled=true
+
+
+
+{
+  "queryType": "groupBy",
+  "dataSource": "tdmsg_pulsar",
+  "granularity": "day",
+  "dimensions":[
+       {
+           "type" : "extraction",
+           "dimension" : "url",
+           "outputName": "site",
+           "outputType": "STRING",
+           "extractionFn": {
+               "type" : "javascript",
+               "function" : "function(str) {
+                      var obj = JSON.parse(str);
+                      return obj.site;
+                    }"
+             }
+       }
+  ],
+  "filter": {
+    "type" : "javascript",
+    "dimension" : "url",
+    "function" : "function(x) {
+          var obj = JSON.parse(x);
+          return (obj.site == 'bar')
+        }"
+  },
+  "aggregations": [
+    { "type": "longSum", "name": "count", "fieldName": "count" }
+  ],
+  "intervals": [
+    "2021-01-01T00:00:00.000/2021-12-03T00:00:00.000"
+  ]
+}
+
+
+
+原始数据：
+
+[ {
+  "segmentId" : "tdmsg_pulsar_2021-12-02T08:00:00.000Z_2021-12-02T09:00:00.000Z_2021-12-02T08:24:54.122Z_1",
+  "columns" : [ "__time", "url", "user", "count", "latencyMs" ],
+  "events" : [ {
+    "__time" : 1638433732686,
+    "url" : "{\"domain\":\"foo\", \"site\":\"bar\"}",
+    "user" : "runoob",
+    "count" : 1,
+    "latencyMs" : 32
+  }, {
+    "__time" : 1638433792686,
+    "url" : "{\"domain\":\"foo\", \"site\":\"bar\"}",
+    "user" : "alice",
+    "count" : 1,
+    "latencyMs" : 64
+  } ]
+}, {
+  "segmentId" : "tdmsg_pulsar_2021-12-02T08:00:00.000Z_2021-12-02T09:00:00.000Z_2021-12-02T08:24:54.122Z_2",
+  "columns" : [ "__time", "url", "user", "count", "latencyMs" ],
+  "events" : [ {
+    "__time" : 1638434440662,
+    "url" : "{\"domain\":\"foo\", \"site\":\"abr\"}",
+    "user" : "runoob",
+    "count" : 1,
+    "latencyMs" : 32
+  }, {
+    "__time" : 1638434500662,
+    "url" : "{\"domain\":\"foo\", \"site\":\"abr\"}",
+    "user" : "alice",
+    "count" : 1,
+    "latencyMs" : 64
+  } ]
+} ]
+
+
+输出结果：
+
+
+[ {
+  "version" : "v1",
+  "timestamp" : "2021-12-02T00:00:00.000Z",
+  "event" : {
+    "site" : "bar",
+    "count" : 2
+  }
+} ]
+
+
+
+
+
