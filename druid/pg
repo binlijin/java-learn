@@ -1,0 +1,50 @@
+psql
+
+\l
+
+\c druid
+
+\d
+
+
+select count(1) from druid_segments where used=false;
+
+
+select count(*) from druid_pendingsegments;
+
+
+druid=# begin;
+BEGIN
+druid=# delete from druid_pendingsegments;
+DELETE 600395
+druid=# select count(*) from druid_pendingsegments;
+ count
+-------
+     0
+(1 row)
+
+druid=# commit;
+COMMIT
+
+
+druid=# select count(*) from druid_tasks;
+ count  
+--------
+ 418402
+(1 row)
+
+druid=# begin;
+BEGIN
+druid=# delete from druid_tasks;
+DELETE 418402
+druid=# select count(*) from druid_tasks;
+ count 
+-------
+     0
+(1 row)
+
+druid=# commit;
+COMMIT
+
+
+
