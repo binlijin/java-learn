@@ -1,0 +1,8 @@
+
+Kafka index service use a lot of direct memory during segment publish #7824
+
+https://github.com/apache/druid/issues/7824
+
+
+
+
