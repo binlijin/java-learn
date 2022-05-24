@@ -1,0 +1,20 @@
+
+
+hdfs dfs -lsr /hbase_v12 > lsr.txt
+
+grep "recovered.edits" lsr.txt > recovered.txt 
+
+grep "recovered.edits/" recovered.txt > recovered2.txt 
+
+cat recovered2.txt |   awk '{print $8}' > recovered.txt 
+
+cat  recovered.txt | tr '\n' ' ' > txt 
+
+
+txt文件头部加上 hdfs dfs -rm -skipTrash 
+
+删除recovered.edits 目录
+
+hdfs dfs -rm -skipTrash 
+
+

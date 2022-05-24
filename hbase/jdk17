@@ -1,0 +1,16 @@
+hbase-env.sh
+
+
+export HBASE_OPTS="$HBASE_OPTS --add-exports=java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED"
+
+ZGC_OPTS="-XX:+UseZGC
+         -XX:+HeapDumpOnOutOfMemoryError
+         -XX:+ExitOnOutOfMemoryError"
+
+ZGC_LOG_OPTS="-XX:HeapDumpPath=${HBASE_LOG_DIR}
+             -XX:ErrorFile=${HBASE_LOG_DIR}/hs_err_%p.log
+             -Xlog:gc*=info,safepoint*=info:file=${HBASE_LOG_DIR}/gc-hbase.log.`date +%Y-%m-%d-%H-%M-%S`:time,level,tags:filecount=10,filesize=64M"
+
+export SERVER_GC_OPTS="$ZGC_LOG_OPTS $ZGC_OPTS"
+
+
