@@ -119,3 +119,11 @@ git config user.email you@example.com
 
 
 
+
+
+git pull origin docker-master
+git merge docker-master
+git commit
+
+
+
