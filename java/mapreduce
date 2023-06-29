@@ -1,0 +1,4 @@
+
+mapred.child.java.opts="-XX:+TraceClassLoading"
+
+
