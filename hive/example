@@ -29,6 +29,39 @@ Joe	2
 
 
 
+create table if not exists alltypes (
+ bo1 boolean,
+ ti1 tinyint,
+ si1 smallint,
+ i1 int,
+ bi1 bigint,
+ f1 float,
+ d1 double,
+ de1 decimal,
+ ts1 timestamp,
+ da1 timestamp,
+ s1 string,
+ vc1 varchar(5),
+ m1 map<string, string>,
+ l1 array<int>,
+ st1 struct<c1:int, c2:string>
+) row format delimited fields terminated by '|'
+collection items terminated by ','
+map keys terminated by ':' stored as textfile;
+
+load data local inpath 'example/files/alltypes.txt' overwrite into table alltypes;
+
+
+select l1[0] from alltypes;
+select l1[1] from alltypes;
+
+select st1.c1 from alltypes;
+select st1.c2 from alltypes;
+
+select m1['k1'] from alltypes;
+select m1['k2'] from alltypes;
+
+
 
 create table if not exists alltypes (
  bo1 boolean,
