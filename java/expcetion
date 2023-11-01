@@ -1,0 +1,6 @@
+
+https://stackoverflow.com/questions/2411487/nullpointerexception-in-java-with-no-stacktrace
+
+-XX:-OmitStackTraceInFastThrow
+
+
